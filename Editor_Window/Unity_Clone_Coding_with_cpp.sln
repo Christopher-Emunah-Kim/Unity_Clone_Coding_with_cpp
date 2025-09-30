@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36429.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Unity_Clone_Coding_with_cpp", "Unity_Clone_Coding_with_cpp.vcxproj", "{C7D95C4D-A23E-4DAD-92CD-D06B308D8773}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Editor_Window", "Unity_Clone_Coding_with_cpp.vcxproj", "{C7D95C4D-A23E-4DAD-92CD-D06B308D8773}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine_Window", "..\Engine_Window\Engine_Window.vcxproj", "{D8193287-D6D3-46C6-A077-A66532BDF3EC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SOURCE", "..\SOURCE\SOURCE.vcxitems", "{F4204DDF-B4C1-435D-AB8E-AC544E12723A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,11 +25,23 @@ Global
 		{C7D95C4D-A23E-4DAD-92CD-D06B308D8773}.Release|x64.Build.0 = Release|x64
 		{C7D95C4D-A23E-4DAD-92CD-D06B308D8773}.Release|x86.ActiveCfg = Release|Win32
 		{C7D95C4D-A23E-4DAD-92CD-D06B308D8773}.Release|x86.Build.0 = Release|Win32
+		{D8193287-D6D3-46C6-A077-A66532BDF3EC}.Debug|x64.ActiveCfg = Debug|x64
+		{D8193287-D6D3-46C6-A077-A66532BDF3EC}.Debug|x64.Build.0 = Debug|x64
+		{D8193287-D6D3-46C6-A077-A66532BDF3EC}.Debug|x86.ActiveCfg = Debug|Win32
+		{D8193287-D6D3-46C6-A077-A66532BDF3EC}.Debug|x86.Build.0 = Debug|Win32
+		{D8193287-D6D3-46C6-A077-A66532BDF3EC}.Release|x64.ActiveCfg = Release|x64
+		{D8193287-D6D3-46C6-A077-A66532BDF3EC}.Release|x64.Build.0 = Release|x64
+		{D8193287-D6D3-46C6-A077-A66532BDF3EC}.Release|x86.ActiveCfg = Release|Win32
+		{D8193287-D6D3-46C6-A077-A66532BDF3EC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6AB37AA2-F277-4D91-B91A-E217A48221F2}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\SOURCE\SOURCE.vcxitems*{d8193287-d6d3-46c6-a077-a66532bdf3ec}*SharedItemsImports = 4
+		..\SOURCE\SOURCE.vcxitems*{f4204ddf-b4c1-435d-ab8e-ac544e12723a}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal

@@ -4,6 +4,10 @@
 #include "framework.h"
 #include "Unity_Clone_Coding_with_cpp.h"
 
+#include "../SOURCE/K_Application.h"
+
+//#pragma comment(lib, "../x64/Debug/Engine_Window.lib")
+
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
