@@ -59,14 +59,38 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, //프로그램 인스턴스 핸�
     // MSG : 윈도우 메시지 구조체
 
     // 기본 메시지 루프입니다:(메시지 큐에 들어온 메시지를 처리하는 반복문)
-    while (GetMessage(&msg, nullptr, 0, 0))
+    while (true)
     {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))  //단축키 메시지인지 확인
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
-            TranslateMessage(&msg); //키보드 메시지를 변환 (가상키코드를 문자메시지로 변환)
-            DispatchMessage(&msg); //메시지를 해당 윈도우 프로시저로 전달
+            if (msg.message == WM_QUIT)
+                break;
+
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))  //단축키 메시지인지 확인
+            {
+                TranslateMessage(&msg); //키보드 메시지를 변환 (가상키코드를 문자메시지로 변환)
+                DispatchMessage(&msg); //메시지를 해당 윈도우 프로시저로 전달
+            }
+        }
+        else
+        {
+            //게임 로직 및 렌더링
         }
     }
+
+
+    //GetMessage 함수 : 메시지 큐에서 메시지를 가져옴(없으면 아무것도 가져오지않음)
+    //PeekMessage 함수 : 메시지 큐에서 메시지를 확인(조회)만 함 (큐에서 제거하지 않음) 항상 리턴됨
+    //                   true를 반환하면 메시지가 있는 것, false를 반환하면 메시지가 없는 것
+    
+    //while (GetMessage(&msg, nullptr, 0, 0))
+    //{
+    //    if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg)) //단축키 메시지인지 확인
+    //    {
+    //        TranslateMessage(&msg); //키보드 메시지를 변환 (가상키코드를 문자메시지로 변환)
+    //        DispatchMessage(&msg); //메시지를 해당 윈도우 프로시저로 전달
+    //    }
+    //}
 
     return (int) msg.wParam;
 }
@@ -113,12 +137,26 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   // 지정된 클래스 이름과 창 이름을 사용하여 새 창을 만들기 
-   //윈도우 클래스 이름, 윈도우 타이틀, 윈도우 스타일, x좌표, y좌표, 너비, 높이, 부모 윈도우 핸들, 메뉴 핸들, 인스턴스 핸들, 추가 매개변수
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, //시작좌표 위치 
-	   CW_USEDEFAULT, 0, //윈도우 크기 (너비, 높이)
+   //윈도우콘솔 타이틀 수정
+   SetConsoleTitle(L"Unity Console Shooting 2D");
+
+   //클라이언트 영역 크기 조정
+   RECT myRect = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT }; //클라이언트 영역 크기 설정
+   AdjustWindowRectEx(&myRect, WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX & ~WS_THICKFRAME, FALSE, 0);
+   //윈도우 스타일 (최대화 버튼 제거 연산, 테두리 크기 변경 제거 비트 연산) 
+   //AdjustWindowRect함수 : 윈도우 스타일에 맞게 클라이언트 영역 크기를 조정
+   //myRect : 조정할 RECT 구조체 포인터
+
+   //실제 윈도우 생성
+   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX & ~WS_THICKFRAME,
+       APP_POSITION_X, APP_POSITION_Y, //시작좌표(스크린 좌표계)
+       myRect.right - myRect.left, myRect.bottom - myRect.top, //윈도우 스타일에 맞춰 조정된 너비와 높이
        nullptr, nullptr, hInstance, nullptr);
+
+   /* HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);  (DEFAULT) */
+       //CreateWindowW함수
+       //윈도우 클래스 이름, 윈도우 타이틀, 윈도우 스타일, x좌표, y좌표, 너비, 높이, 부모 윈도우 핸들, 메뉴 핸들, 인스턴스 핸들, 추가 매개변수
 
    if (!hWnd)
    {
@@ -166,6 +204,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
+
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
         }
