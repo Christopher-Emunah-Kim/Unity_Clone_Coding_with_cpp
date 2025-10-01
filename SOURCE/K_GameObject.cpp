@@ -1,5 +1,6 @@
 
 #include "K_GameObject.h"
+#include "K_Input.h"
 
 namespace KHS
 {
@@ -16,22 +17,22 @@ namespace KHS
 	void GameObject::Update()
 	{
 
-		if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+		if (Input::GetKey(EKeyCode::A) || Input::GetKey(EKeyCode::LeftArrow))
 		{
 			m_x += -0.01f;
 		}
 
-		if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
+		if (Input::GetKey(EKeyCode::D)|| Input::GetKey(EKeyCode::RightArrow))
 		{
 			m_x += 0.01f;
 		}
 
-		if (GetAsyncKeyState(VK_UP) & 0x8000)
+		if (Input::GetKey(EKeyCode::W) || Input::GetKey(EKeyCode::UpArrow))
 		{
 			m_y -= 0.01f;
 		}
 
-		if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+		if (Input::GetKey(EKeyCode::S) || Input::GetKey(EKeyCode::DownArrow))
 		{
 			m_y += 0.01f;
 		}

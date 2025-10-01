@@ -1,4 +1,5 @@
 #include "K_Application.h"
+#include "K_Input.h"
 
 namespace KHS
 {
@@ -18,6 +19,8 @@ namespace KHS
 		m_hdc = GetDC(m_hwnd); 
 
 		m_player.SetPosition(0.0f, 0.0f);
+
+		Input::Initialize();
 	}
 
 	void Application::Run()
@@ -29,6 +32,8 @@ namespace KHS
 
 	void Application::Update()
 	{
+		Input::Update();
+
 		m_player.Update();
 	}
 

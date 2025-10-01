@@ -1,6 +1,4 @@
 ﻿//{{NO_DEPENDENCIES}}
-// Microsoft Visual C++에서 생성한 포함 파일입니다.
-// 다음에서 사용 Unity_Clone_Coding_with_cpp.rc
 
 #define IDS_APP_TITLE			103
 
