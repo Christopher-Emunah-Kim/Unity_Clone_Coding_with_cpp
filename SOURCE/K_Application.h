@@ -1,5 +1,6 @@
 #pragma once
 #include "CommonInclude.h"
+#include "K_GameObject.h"
 
 namespace KHS
 {
@@ -21,10 +22,8 @@ namespace KHS
 	private:
 		HWND m_hwnd = nullptr;
 		HDC m_hdc = nullptr; 
-
-		float m_speed;
-		float m_x;
-		float m_y;
+		
+		GameObject m_player;
 	};
 }
 
