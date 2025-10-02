@@ -43,6 +43,16 @@ namespace KHS
 			bool isPressed;
 		};
 
+	private:
+		static void CreateKeys();
+		static void UpdateKeys();
+
+		static void UpdateKey(Input::Key& key);
+
+		static bool IsKeyDown(EKeyCode code);
+		static void UpdateKeyDown(Input::Key& key);
+		static void UpdateKeyUp(Input::Key& key);
+
 	public:
 		static void Initialize();
 		static void Update();

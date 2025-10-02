@@ -26,6 +26,18 @@ namespace KHS
 
 	void Input::Initialize()
 	{
+		CreateKeys();
+	}
+
+
+	void Input::Update()
+	{
+		UpdateKeys();
+	}
+
+
+	void Input::CreateKeys()
+	{
 		m_keys.resize(static_cast<size_t>(EKeyCode::Max));
 
 		for (size_t i = 0; i < static_cast<size_t>(EKeyCode::Max); ++i)
@@ -39,38 +51,56 @@ namespace KHS
 		}
 	}
 
-	void Input::Update()
+	void Input::UpdateKeys()
 	{
 		for (size_t i = 0; i < static_cast<size_t>(EKeyCode::Max); ++i)
 		{
-			if (GetAsyncKeyState(ASCII[i]) & 0x8000) //현재 프레임에 눌려있음
-			{
-				if (m_keys[i].isPressed == true) //이전 프레임에도 눌려있었음
-				{
-					m_keys[i].state = EKeyState::Pressed;
-				}
-				else
-				{
-					m_keys[i].state = EKeyState::Down;
-				}
-
-				m_keys[i].isPressed = true;
-			}
-			else //현재 프레임에 눌려있지 않음
-			{
-				if (m_keys[i].isPressed == true) //이전 프레임에는 눌려있었음
-				{
-					m_keys[i].state = EKeyState::Up;
-				}
-				else
-				{
-					m_keys[i].state = EKeyState::None;
-				}
-
-				m_keys[i].isPressed = false;
-			}
+			UpdateKey(m_keys[i]);
 		}
 	}
 
+	void Input::UpdateKey(Input::Key& key)
+	{
+		if (IsKeyDown(key.keyCode)) //현재 프레임에 눌려있음
+		{
+			UpdateKeyDown(key);
+		}
+		else //현재 프레임에 눌려있지 않음
+		{
+			UpdateKeyUp(key);
+		}
+	}
 
+	bool Input::IsKeyDown(EKeyCode code)
+	{
+		return GetAsyncKeyState(ASCII[static_cast<int>(code)]) & 0x8000;
+	}
+
+	void Input::UpdateKeyDown(Input::Key& key)
+	{
+		if (key.isPressed == true) //이전 프레임에도 눌려있었음
+		{	
+			key.state = EKeyState::Pressed;
+		}
+		else
+		{
+			key.state = EKeyState::Down;
+		}
+
+		key.isPressed = true;
+	}
+
+	void Input::UpdateKeyUp(Input::Key& key)
+	{
+		if (key.isPressed == true) //이전 프레임에는 눌려있었음
+		{
+			key.state = EKeyState::Up;
+		}
+		else
+		{
+			key.state = EKeyState::None;
+		}
+
+		key.isPressed = false;
+	}
 }
