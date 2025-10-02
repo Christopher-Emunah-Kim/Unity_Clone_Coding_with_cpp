@@ -16,12 +16,15 @@ namespace KHS
 		void Render();
 
 	public:
-		void Initialize(HWND hwnd);
+		void Initialize(HWND hwnd, UINT width, UINT height);
 		void Run();
 
 	private:
-		HWND m_hwnd = nullptr;
-		HDC m_hdc = nullptr; 
+		HWND m_hwnd;
+		HDC m_hdc; 
+
+		HDC m_backHdc;
+		HBITMAP m_backBuffer;
 		
 		GameObject m_player;
 	};

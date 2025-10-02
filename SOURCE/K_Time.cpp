@@ -8,11 +8,6 @@ namespace KHS
 	void Time::Initialize()
 	{
 		m_prevTimePoint = std::chrono::steady_clock::now();
-
-		////CPU 고유진동수
-		//QueryPerformanceFrequency(&m_CPUFrequency);
-		////프로그램 시작시점 진동수
-		//QueryPerformanceCounter(&m_prevFreuquency);
 	}
 
 	bool Time::CanUpdate()
@@ -31,14 +26,6 @@ namespace KHS
 		m_deltaTime = deltaTime.count();
 
 		return true;
-
-		///*QueryPerformanceCounter(&m_curFreuquency);
-
-		//const LONGLONG differenceFrequency = m_curFreuquency.QuadPart - m_prevFreuquency.QuadPart;
-
-		//m_deltaTime = dt; 
-
-		//m_prevFreuquency = m_curFreuquency;*/
 	}
 
 	void Time::Render(HDC hdc)
@@ -61,6 +48,7 @@ namespace KHS
 
 		TextOut(hdc, 10, 10, str.c_str(), static_cast<int>(str.size()));
 	}
+
 	float Time::GetDeltaTime()
 	{
 		return std::chrono::duration<float>(m_deltaTime).count(); 

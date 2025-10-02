@@ -13,6 +13,7 @@ namespace KHS
 
 	GameObject::~GameObject()
 	{
+
 	}
 
 	void GameObject::Update()
