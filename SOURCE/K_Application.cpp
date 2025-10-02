@@ -1,5 +1,6 @@
 #include "K_Application.h"
 #include "K_Input.h"
+#include "K_Time.h"
 
 namespace KHS
 {
@@ -21,13 +22,17 @@ namespace KHS
 		m_player.SetPosition(0.0f, 0.0f);
 
 		Input::Initialize();
+		Time::Initialize();
 	}
 
 	void Application::Run()
 	{
-		Update();
-		LateUpdate();
-		Render();
+		if (Time::CanUpdate())
+		{
+			Update();
+			LateUpdate();
+			Render();
+		}
 	}
 
 	void Application::Update()
@@ -44,6 +49,7 @@ namespace KHS
 
 	void Application::Render()
 	{
+		Time::Render(m_hdc);
 		m_player.Render(m_hdc);
 	}
 }

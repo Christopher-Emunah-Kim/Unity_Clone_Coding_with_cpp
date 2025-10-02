@@ -3,6 +3,7 @@
 
 namespace KHS
 {
+	
 	class GameObject
 	{
 	public:

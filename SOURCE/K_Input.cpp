@@ -61,11 +61,11 @@ namespace KHS
 
 	void Input::UpdateKey(Input::Key& key)
 	{
-		if (IsKeyDown(key.keyCode)) //현재 프레임에 눌려있음
+		if (IsKeyDown(key.keyCode)) 
 		{
 			UpdateKeyDown(key);
 		}
-		else //현재 프레임에 눌려있지 않음
+		else
 		{
 			UpdateKeyUp(key);
 		}

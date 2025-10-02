@@ -1,6 +1,7 @@
 
 #include "K_GameObject.h"
 #include "K_Input.h"
+#include "K_Time.h"
 
 namespace KHS
 {
@@ -16,25 +17,30 @@ namespace KHS
 
 	void GameObject::Update()
 	{
+		const float DEFAULT_OBJECT_SPEED = 100.0f;
+
+		float deltaTime = Time::GetDeltaTime();
+
+		float moveDistance = DEFAULT_OBJECT_SPEED * deltaTime;
 
 		if (Input::GetKey(EKeyCode::A) || Input::GetKey(EKeyCode::LeftArrow))
 		{
-			m_x += -0.01f;
+			m_x -= moveDistance;
 		}
 
 		if (Input::GetKey(EKeyCode::D)|| Input::GetKey(EKeyCode::RightArrow))
 		{
-			m_x += 0.01f;
+			m_x += moveDistance;
 		}
 
 		if (Input::GetKey(EKeyCode::W) || Input::GetKey(EKeyCode::UpArrow))
 		{
-			m_y -= 0.01f;
+			m_y -= moveDistance;
 		}
 
 		if (Input::GetKey(EKeyCode::S) || Input::GetKey(EKeyCode::DownArrow))
 		{
-			m_y += 0.01f;
+			m_y += moveDistance;
 		}
 
 	}

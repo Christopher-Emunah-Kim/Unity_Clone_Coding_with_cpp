@@ -18,10 +18,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)K_GameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Application.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Input.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_Time.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)K_GameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Application.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Input.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_Time.cpp" />
   </ItemGroup>
 </Project>
