@@ -38,7 +38,8 @@ namespace KHS
 
 	void Input::CreateKeys()
 	{
-		m_keys.resize(static_cast<size_t>(EKeyCode::Max));
+		m_keys.clear();
+		m_keys.reserve(static_cast<size_t>(EKeyCode::Max));
 
 		for (size_t i = 0; i < static_cast<size_t>(EKeyCode::Max); ++i)
 		{
