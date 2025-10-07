@@ -15,6 +15,12 @@ namespace KHS
 		void LateUpdate();
 		void Render();
 
+		void MyAdjustWindowRect(HWND hwnd, UINT width, UINT height);
+		void CreateBuffer(UINT width, UINT height);
+		void InitializeSubsystems();
+		void ClearBuffer(RECT& rc);
+		void CopyBuffer(RECT& rc);
+
 	public:
 		void Initialize(HWND hwnd, UINT width, UINT height);
 		void Run();
@@ -25,8 +31,6 @@ namespace KHS
 
 		HDC m_backHdc;
 		HBITMAP m_backBuffer;
-		
-		GameObject m_player;
 	};
 }
 
