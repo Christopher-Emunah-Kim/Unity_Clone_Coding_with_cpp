@@ -1,2 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{9ca43856-772b-44b9-b90a-eb5e21e23de0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="K_TempScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="K_PlayScene.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="K_PlayScene.cpp" />
+  </ItemGroup>
+</Project>
