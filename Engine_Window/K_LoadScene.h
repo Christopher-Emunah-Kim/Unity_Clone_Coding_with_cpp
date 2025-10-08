@@ -6,7 +6,8 @@ namespace KHS
 {
 	void LoadScenes()
 	{
-		//SceneManager::CreateScene<PlayScene>(L"PlayScene");
+		SceneManager::CreateScene<PlayScene>(L"PlayScene");
+		SceneManager::LoadScene(L"PlayScene");
 		//SceneManager::CreateScene<TitleScene>(L"TitleScene");
 	}
 }

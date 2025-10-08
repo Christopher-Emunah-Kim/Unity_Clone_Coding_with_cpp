@@ -18,4 +18,21 @@ namespace KHS
 	{
 		m_activeScene->Render(hdc);
 	}
+
+	Scene* SceneManager::LoadScene(const std::wstring& name)
+	{
+		std::map<std::wstring, Scene*>::iterator findIter = m_scenes.find(name);
+
+		if (findIter == m_scenes.end())
+		{
+			return nullptr;
+
+		}
+
+		m_activeScene = findIter->second;
+
+		return m_activeScene;
+	}
+
+
 }

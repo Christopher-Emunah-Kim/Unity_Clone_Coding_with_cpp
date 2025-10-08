@@ -5,7 +5,7 @@
 #include "Unity_Clone_Coding_with_cpp.h"
 
 #include "../SOURCE/K_Application.h"
-#include "../Engine_Window/K_TempScene.h"
+#include "../Engine_Window/K_LoadScene.h"
 
 //#pragma comment(lib, "../x64/Debug/Engine_Window.lib")
 
@@ -168,7 +168,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd); //윈도우의 클라이언트 영역을 갱신
 
    //임시 로드 씬
-
+   KHS::LoadScenes();
 
    return TRUE;
 }

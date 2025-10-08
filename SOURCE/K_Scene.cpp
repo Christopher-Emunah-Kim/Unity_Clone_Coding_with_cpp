@@ -37,4 +37,9 @@ namespace KHS
 			obj->Render(hdc);
 		}
 	}
+
+	void Scene::AddGameObject(GameObject* gameObject)
+	{
+		m_gameObjects.push_back(gameObject);
+	}
 }

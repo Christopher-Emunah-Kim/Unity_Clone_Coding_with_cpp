@@ -8,7 +8,7 @@ namespace KHS
 	{
 	public:
 		template <typename T>
-		static Scene* CreateScene(std::wstring& name)
+		static Scene* CreateScene(const std::wstring& name)
 		{
 			T* scene = new T();
 			scene->SetName(name);
@@ -16,6 +16,8 @@ namespace KHS
 
 			m_scenes.insert(std::make_pair(name, scene));
 		}
+
+		static Scene* LoadScene(const std::wstring& name);
 
 		static void Initialize();
 		static void Update();
