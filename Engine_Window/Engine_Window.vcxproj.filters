@@ -6,7 +6,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="K_TempScene.h">
+    <ClInclude Include="K_LoadScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="K_PlayScene.h" />

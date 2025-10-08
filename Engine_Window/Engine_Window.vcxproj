@@ -129,7 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="K_PlayScene.h" />
-    <ClInclude Include="K_TempScene.h" />
+    <ClInclude Include="K_LoadScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="K_PlayScene.cpp" />
