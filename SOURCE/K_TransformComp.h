@@ -3,25 +3,21 @@
 
 namespace KHS
 {
+	using namespace Math;
+
 	class TransformComp : public Component
 	{
 	public:
-		TransformComp();
-		virtual ~TransformComp();
-
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LastUpdate() override;
 		virtual void Render(HDC hdc) override;
 
-		void SetPosition(int x, int y);
-		
-		inline int GetX() { return m_x; }
-		inline int GetY() { return m_y; }
+		void SetPosition(Vector2D pos);
+		Vector2D GetPosition() { return m_position; }
 
 	private:
-		int m_x;
-		int m_y;
+		Vector2D m_position;
 	};
 }
 

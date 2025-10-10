@@ -7,7 +7,8 @@
 #include "../SOURCE/K_Application.h"
 #include "../Engine_Window/K_LoadScene.h"
 
-//#pragma comment(lib, "../x64/Debug/Engine_Window.lib")
+ULONG_PTR gdiplusToken; //GDI+ 토큰
+Gdiplus::GdiplusStartupInput gdiplusStartupInput; //GDI+ 초기화 구조체
 
 #define MAX_LOADSTRING 100
 
@@ -37,10 +38,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, //프로그램 인스턴스 핸�
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     // TODO: 여기에 코드를 입력합니다.
-
-
-
-
 
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
@@ -86,19 +83,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, //프로그램 인스턴스 핸�
         }
     }
 
+	Gdiplus::GdiplusShutdown(gdiplusToken); //GDI+ 종료
 
-    //GetMessage 함수 : 메시지 큐에서 메시지를 가져옴(없으면 아무것도 가져오지않음)
-    //PeekMessage 함수 : 메시지 큐에서 메시지를 확인(조회)만 함 (큐에서 제거하지 않음) 항상 리턴됨
-    //                   true를 반환하면 메시지가 있는 것, false를 반환하면 메시지가 없는 것
-    
-    //while (GetMessage(&msg, nullptr, 0, 0))
-    //{
-    //    if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg)) //단축키 메시지인지 확인
-    //    {
-    //        TranslateMessage(&msg); //키보드 메시지를 변환 (가상키코드를 문자메시지로 변환)
-    //        DispatchMessage(&msg); //메시지를 해당 윈도우 프로시저로 전달
-    //    }
-    //}
 
     return (int) msg.wParam;
 }
@@ -166,6 +152,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    ShowWindow(hWnd, nCmdShow); //윈도우를 화면에 표시
    UpdateWindow(hWnd); //윈도우의 클라이언트 영역을 갱신
+
+   //GDI+ 초기화
+   Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
+
 
    //임시 로드 씬
    KHS::LoadScenes();

@@ -20,6 +20,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)K_GameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Application.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Input.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_Math.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Scene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_SceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_SpriteRendererComp.h" />

@@ -4,13 +4,6 @@
 
 namespace KHS
 {
-	TransformComp::TransformComp()
-		:m_x(0), m_y(0)
-	{
-	}
-	TransformComp::~TransformComp()
-	{
-	}
 	void TransformComp::Initialize()
 	{
 	}
@@ -24,22 +17,22 @@ namespace KHS
 
 		if (Input::GetKey(EKeyCode::A) || Input::GetKey(EKeyCode::LeftArrow))
 		{
-			m_x -= moveDistance;
+			m_position.x -= moveDistance;
 		}
 
 		if (Input::GetKey(EKeyCode::D) || Input::GetKey(EKeyCode::RightArrow))
 		{
-			m_x += moveDistance;
+			m_position.x += moveDistance;
 		}
 
 		if (Input::GetKey(EKeyCode::W) || Input::GetKey(EKeyCode::UpArrow))
 		{
-			m_y -= moveDistance;
+			m_position.y -= moveDistance;
 		}
 
 		if (Input::GetKey(EKeyCode::S) || Input::GetKey(EKeyCode::DownArrow))
 		{
-			m_y += moveDistance;
+			m_position.y += moveDistance;
 		}
 	}
 	void TransformComp::LastUpdate()
@@ -48,9 +41,9 @@ namespace KHS
 	void TransformComp::Render(HDC hdc)
 	{
 	}
-	void TransformComp::SetPosition(int x, int y)
+	void TransformComp::SetPosition(Vector2D pos)
 	{
-		m_x = x;
-		m_y = y;
+		m_position.x = pos.x;
+		m_position.y = pos.y;
 	}
 }

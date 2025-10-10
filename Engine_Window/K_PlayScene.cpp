@@ -7,51 +7,20 @@ namespace KHS
 {
     void PlayScene::Initialize()
     {
-		/*GameObject* obj = new GameObject();
-		AddGameObject(obj);*/
 		{
-			Player* pl = new Player();
+			Player* bg = new Player();
 			TransformComp* tr
-				= pl->AddComponent<TransformComp>();
-			tr->SetPosition(800, 450);
+				= bg->AddComponent<TransformComp>();
+			tr->SetPosition(Vector2D(0,0));
 
 			tr->SetName(L"TR");
 
 			SpriteRendererComp* sr
-				= pl->AddComponent<SpriteRendererComp>();
+				= bg->AddComponent<SpriteRendererComp>();
 			sr->SetName(L"SR");
+			sr->ImageLoad(L"CloudOcean");
 
-			AddGameObject(pl);
-		}
-
-		{
-			Player* pl = new Player();
-			TransformComp* tr
-				= pl->AddComponent<TransformComp>();
-			tr->SetPosition(100, 650);
-
-			tr->SetName(L"TR");
-
-			SpriteRendererComp* sr
-				= pl->AddComponent<SpriteRendererComp>();
-			sr->SetName(L"SR");
-
-			AddGameObject(pl);
-		}
-
-		{
-			Player* pl = new Player();
-			TransformComp* tr
-				= pl->AddComponent<TransformComp>();
-			tr->SetPosition(300, 450);
-
-			tr->SetName(L"TR");
-
-			SpriteRendererComp* sr
-				= pl->AddComponent<SpriteRendererComp>();
-			sr->SetName(L"SR");
-
-			AddGameObject(pl);
+			AddGameObject(bg);
 		}
     }
 

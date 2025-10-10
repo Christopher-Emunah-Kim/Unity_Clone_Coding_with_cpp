@@ -3,6 +3,9 @@
 
 namespace KHS
 {
+	const wstring DEFAULT_SPRITE_PATH = L"..\\Resources\\";
+	const wstring DEFAULT_SPRITE_EXT = L".png";
+
 	class SpriteRendererComp : public Component
 	{
 	public:
@@ -14,8 +17,12 @@ namespace KHS
 		virtual void LastUpdate() override;
 		virtual void Render(HDC hdc) override;
 
-	private:
+		void ImageLoad(const std::wstring& path);
 
+	private:
+		Gdiplus::Image* m_image;
+		UINT m_imageWidth;
+		UINT m_imageHeight;
 	};
 }
 

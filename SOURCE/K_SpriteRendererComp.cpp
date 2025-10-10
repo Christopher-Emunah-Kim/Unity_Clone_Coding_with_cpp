@@ -1,8 +1,13 @@
 #include "K_SpriteRendererComp.h"
+#include "K_TransformComp.h"
+#include "K_GameObject.h"
 
 namespace KHS
 {
 	SpriteRendererComp::SpriteRendererComp()
+		:m_image(nullptr)
+		, m_imageWidth(0)
+		, m_imageHeight(0)
 	{
 	}
 	SpriteRendererComp::~SpriteRendererComp()
@@ -19,20 +24,26 @@ namespace KHS
 	}
 	void SpriteRendererComp::Render(HDC hdc)
 	{
-		////파랑 브러쉬 생성
-		//HBRUSH blueBrush = CreateSolidBrush(RGB(0, 0, 255));
+		TransformComp* transform = GetOwner()->GetComponent<TransformComp>();
+		Vector2D pos = transform->GetPosition();
 
-		//// 파랑 브러쉬 DC에 선택 그리고 흰색 브러쉬 반환값 반환
-		//HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, blueBrush);
-		//HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
+		Gdiplus::Graphics graphics(hdc);
+		graphics.DrawImage(m_image, Gdiplus::Rect(pos.x, pos.y, m_imageWidth, m_imageHeight));
+	}
 
-		//HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
-		//SelectObject(hdc, oldPen);
+	void SpriteRendererComp::ImageLoad(const std::wstring& path)
+	{
+		
+		const wstring combinedPath = DEFAULT_SPRITE_PATH + path + DEFAULT_SPRITE_EXT;
+		m_image = Gdiplus::Image::FromFile(combinedPath.c_str());
 
-		//Rectangle(hdc, 100 + m_x, 100 + m_y, 200 + m_x, 200 + m_y);
+		if (m_image == nullptr)
+		{
+			std::wcout << L"Image Load Failed : " << combinedPath << std::endl;
+			return;
+		}
 
-		//SelectObject(hdc, oldBrush);
-		//DeleteObject(blueBrush);
-		//DeleteObject(redPen);
+		m_imageWidth = m_image->GetWidth();
+		m_imageHeight = m_image->GetHeight();
 	}
 }
