@@ -22,7 +22,7 @@ namespace KHS
 			static_assert(std::is_base_of<Component, T>::value, "T must be derived from Component");
 
 			T* component = new T();
-			
+			component->Initialize();
 			component->SetOwner(this);
 
 			m_components.push_back(component);

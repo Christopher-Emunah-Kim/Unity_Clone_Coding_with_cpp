@@ -23,15 +23,20 @@ namespace KHS
 
 	Scene* SceneManager::LoadScene(const std::wstring& name)
 	{
+		if (m_activeScene != nullptr)
+		{
+			m_activeScene->OnExit();
+		}
+
 		std::map<std::wstring, Scene*>::iterator findIter = m_scenes.find(name);
 
 		if (findIter == m_scenes.end())
 		{
 			return nullptr;
-
 		}
 
 		m_activeScene = findIter->second;
+		m_activeScene->OnEnter();
 
 		return m_activeScene;
 	}

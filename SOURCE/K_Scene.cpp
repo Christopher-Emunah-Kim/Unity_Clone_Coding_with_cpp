@@ -1,45 +1,84 @@
 #include "K_Scene.h"
+#include "K_Layer.h"
 
 namespace KHS
 {
 	Scene::Scene()
-		:Entity(), m_gameObjects()
+		:m_layers()
 	{
+		CreateLayers();
 	}
 	Scene::~Scene()
 	{
 	}
 
+	void Scene::CreateLayers()
+	{
+		m_layers.resize((UINT)ELayerType::MAX, nullptr);
+
+		for (size_t i = 0; i < (UINT)ELayerType::MAX; ++i)
+		{
+			m_layers[i] = new Layer();
+		}
+	}
+
 	void Scene::Initialize()
 	{
+		for (Layer* layer : m_layers)
+		{
+			if (layer == nullptr)
+				continue;
+
+			layer->Initialize();
+		}
 	}
 
 	void Scene::Update()
 	{
-		for (GameObject* obj : m_gameObjects)
+		for (Layer* layer : m_layers)
 		{
-			obj->Update();
+			if (layer == nullptr)
+				continue;
+
+			layer->Update();
 		}
 	}
 
 	void Scene::LateUpdate()
 	{
-		for (GameObject* obj : m_gameObjects)
+		for (Layer* layer : m_layers)
 		{
-			obj->LastUpdate();
+			if (layer == nullptr)
+				continue;
+
+			layer->LateUpdate();
 		}
 	}
 
 	void Scene::Render(HDC hdc)
 	{
-		for (GameObject* obj : m_gameObjects)
+		for (Layer* layer : m_layers)
 		{
-			obj->Render(hdc);
+			if (layer == nullptr)
+				continue;
+
+			layer->Render(hdc);
 		}
 	}
 
-	void Scene::AddGameObject(GameObject* gameObject)
+	void Scene::OnEnter()
 	{
-		m_gameObjects.push_back(gameObject);
+	}
+
+	void Scene::OnExit()
+	{
+	}
+
+	void Scene::AddGameObject(GameObject* gameObject, ELayerType type)
+	{
+		if (gameObject == nullptr)
+			return;
+
+		m_layers[(UINT)type]->AddGameObject(gameObject);
 	}
 }
