@@ -4,14 +4,27 @@
     <Filter Include="Scene">
       <UniqueIdentifier>{9ca43856-772b-44b9-b90a-eb5e21e23de0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Actor">
+      <UniqueIdentifier>{ed676de6-7e68-4fb2-a6ed-e3432b81e564}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="K_LoadScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="K_PlayScene.h" />
+    <ClInclude Include="K_PlayScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="K_Player.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="K_PlayScene.cpp" />
+    <ClCompile Include="K_PlayScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="K_Player.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
