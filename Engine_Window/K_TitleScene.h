@@ -3,13 +3,11 @@
 
 namespace KHS
 {
-	class Player;
-
-	class PlayScene : public Scene
+	class TitleScene : public Scene
 	{
 	public:
-		PlayScene();
-		virtual ~PlayScene() = default;
+		TitleScene();
+		virtual ~TitleScene();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -20,6 +18,7 @@ namespace KHS
 		virtual void OnExit() override;
 
 	private:
-		Player* m_background;
 	};
 }
+
+
