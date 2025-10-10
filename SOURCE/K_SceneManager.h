@@ -15,6 +15,8 @@ namespace KHS
 			scene->Initialize();
 
 			m_scenes.insert(std::make_pair(name, scene));
+
+			return scene;
 		}
 
 		static Scene* LoadScene(const std::wstring& name);

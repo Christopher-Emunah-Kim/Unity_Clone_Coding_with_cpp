@@ -1,3 +1,4 @@
+#pragma once
 #include "CommonInclude.h"
 
 namespace KHS

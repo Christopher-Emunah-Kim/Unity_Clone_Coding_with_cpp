@@ -2,6 +2,8 @@
 
 namespace KHS
 {
+	std::map<const std::wstring, Scene*> SceneManager::m_scenes{};
+	Scene* SceneManager::m_activeScene = nullptr;
 	
 	void SceneManager::Initialize()
 	{
