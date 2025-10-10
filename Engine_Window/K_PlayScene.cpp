@@ -5,6 +5,7 @@
 #include "K_Input.h"
 #include "K_TitleScene.h"
 #include "K_SceneManager.h"
+#include "K_ObjectInstantiate.h"
 
 namespace KHS
 {
@@ -15,18 +16,11 @@ namespace KHS
 
     void PlayScene::Initialize()
     {
-		{
-			m_background = new Player();
-			TransformComp* tr = m_background->AddComponent<TransformComp>();
-			tr->SetPosition(Vector2D(0,0));
-			tr->SetName(L"TR");
+		m_background = ObjectInstantiate::Instantiate<Player>(ELayerType::BACKGROUND, Vector2D(0, 0));
 
-			SpriteRendererComp* sr = m_background->AddComponent<SpriteRendererComp>();
-			sr->SetName(L"SR");
-			sr->ImageLoad(L"CloudOcean");
-
-			AddGameObject(m_background, ELayerType::BACKGROUND);
-		}
+		SpriteRendererComp* sr = m_background->AddComponent<SpriteRendererComp>();
+		sr->SetName(L"SR");
+		sr->ImageLoad(L"CloudOcean");
     }
 
     void PlayScene::Update()

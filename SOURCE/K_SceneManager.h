@@ -12,14 +12,16 @@ namespace KHS
 		{
 			T* scene = new T();
 			scene->SetName(name);
-			scene->Initialize();
+			m_activeScene = scene;
 
+			scene->Initialize();
 			m_scenes.insert(std::make_pair(name, scene));
 
 			return scene;
 		}
 
 		static Scene* LoadScene(const std::wstring& name);
+		static Scene* GetActiveScene();
 
 		static void Initialize();
 		static void Update();

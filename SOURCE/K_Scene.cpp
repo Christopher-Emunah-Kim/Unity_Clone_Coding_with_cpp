@@ -81,4 +81,9 @@ namespace KHS
 
 		m_layers[(UINT)type]->AddGameObject(gameObject);
 	}
+
+	Layer* Scene::GetLayer(ELayerType type)
+	{
+		return m_layers[(UINT)type];
+	}
 }

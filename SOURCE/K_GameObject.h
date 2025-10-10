@@ -11,6 +11,10 @@ namespace KHS
 		GameObject();
 		~GameObject();
 
+	private:
+		void AddTransformComp();
+
+	public:
 		virtual void Initialize();
 		virtual void Update();
 		virtual void LastUpdate();
@@ -46,8 +50,6 @@ namespace KHS
 			}
 			return nullptr;
 		}
-
-
 
 	private:
 		std::vector<Component*> m_components;

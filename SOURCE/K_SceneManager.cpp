@@ -41,5 +41,8 @@ namespace KHS
 		return m_activeScene;
 	}
 
-
+	Scene* SceneManager::GetActiveScene()
+	{
+		return m_activeScene;
+	}
 }

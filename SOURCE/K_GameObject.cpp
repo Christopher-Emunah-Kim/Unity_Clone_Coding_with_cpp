@@ -3,12 +3,14 @@
 #include "K_Input.h"
 #include "K_Time.h"
 #include "K_Component.h"
+#include "K_TransformComp.h"
 
 namespace KHS
 {
 
 	GameObject::GameObject()
 	{
+		AddTransformComp();
 	}
 
 	GameObject::~GameObject()
@@ -18,6 +20,11 @@ namespace KHS
 			delete component;
 			component = nullptr;
 		}
+	}
+
+	void GameObject::AddTransformComp()
+	{
+		AddComponent<TransformComp>();
 	}
 
 	void GameObject::Initialize()

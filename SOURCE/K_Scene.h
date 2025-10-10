@@ -24,6 +24,7 @@ namespace KHS
 
 		void AddGameObject(GameObject* gameObject, ELayerType type);
 
+		Layer* GetLayer(ELayerType type);
 	private:
 		std::vector<Layer*> m_layers;
 	};
