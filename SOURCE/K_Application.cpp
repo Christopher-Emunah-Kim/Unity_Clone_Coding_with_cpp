@@ -58,7 +58,7 @@ namespace KHS
 
 	void Application::LateUpdate()
 	{
-		//애플리케이션 레이트 업데이트 코드 작성
+		SceneManager::LateUpdate();
 	}
 
 	void Application::Render() //Double Buffering

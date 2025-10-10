@@ -28,7 +28,7 @@ namespace KHS
 		Vector2D pos = transform->GetPosition();
 
 		Gdiplus::Graphics graphics(hdc);
-		graphics.DrawImage(m_image, Gdiplus::Rect(pos.x, pos.y, m_imageWidth, m_imageHeight));
+		graphics.DrawImage(m_image, Gdiplus::Rect(static_cast<int>(pos.x), static_cast<int>(pos.y), m_imageWidth, m_imageHeight));
 	}
 
 	void SpriteRendererComp::ImageLoad(const std::wstring& path)
