@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_Application.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_SpriteRendererComp.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_TransformComp.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_Component.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_Scene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_SceneManager.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_GameObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_Input.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_Time.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_Application.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_SpriteRendererComp.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_TransformComp.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_Component.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_Entity.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_SceneManager.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_GameObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_Math.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_Input.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_Time.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{e8b7cd05-43ce-4945-9859-14b5671248f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component">
+      <UniqueIdentifier>{500755bc-611f-4a57-b17d-5306f1af5690}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{497fda9f-f651-45a1-a87c-10d8156914d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{907a1aeb-e302-49b2-ab09-8e2ac783ffb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{f9971fdd-05e3-4ba0-8042-533f1922b965}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service">
+      <UniqueIdentifier>{20d0e7da-55ba-49f1-8489-c3b10b171f17}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
