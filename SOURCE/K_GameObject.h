@@ -1,5 +1,6 @@
 #pragma once
 #include "CommonInclude.h"
+#include "K_Component.h"
 
 namespace KHS
 {
@@ -10,18 +11,46 @@ namespace KHS
 		GameObject();
 		~GameObject();
 
-		void Update();
-		void LastUpdate();
-		void Render(HDC hdc);
+		virtual void Initialize();
+		virtual void Update();
+		virtual void LastUpdate();
+		virtual void Render(HDC hdc);
 
-		void SetPosition(float x, float y);
+		template <typename T>
+		T* AddComponent()
+		{
+			static_assert(std::is_base_of<Component, T>::value, "T must be derived from Component");
 
-		inline float GetX() const { return m_x; }
-		inline float GetY() const { return m_y; }
+			T* component = new T();
+			
+			component->SetOwner(this);
+
+			m_components.push_back(component);
+
+			return component;
+		}
+
+		template <typename T>
+		T* GetComponent()
+		{
+			static_assert(std::is_base_of<Component, T>::value, "T must be derived from Component");
+
+			for (Component* component : m_components)
+			{
+				T* castedComponent = dynamic_cast<T*>(component);
+
+				if (castedComponent != nullptr)
+				{
+					return castedComponent;
+				}
+			}
+			return nullptr;
+		}
+
+
 
 	private:
-		float m_x;
-		float m_y;
+		std::vector<Component*> m_components;
 	};
 
 }
