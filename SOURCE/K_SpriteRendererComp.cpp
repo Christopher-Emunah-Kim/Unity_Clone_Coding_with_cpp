@@ -1,13 +1,11 @@
-#include "K_SpriteRendererComp.h"
+﻿#include "K_SpriteRendererComp.h"
 #include "K_TransformComp.h"
 #include "K_GameObject.h"
 
 namespace KHS
 {
 	SpriteRendererComp::SpriteRendererComp()
-		:m_image(nullptr)
-		, m_imageWidth(0)
-		, m_imageHeight(0)
+		:Component(), m_texture(nullptr), m_imageSize(Vector2D::One)
 	{
 	}
 	SpriteRendererComp::~SpriteRendererComp()
@@ -19,31 +17,31 @@ namespace KHS
 	void SpriteRendererComp::Update()
 	{
 	}
-	void SpriteRendererComp::LastUpdate()
+	void SpriteRendererComp::LateUpdate()
 	{
 	}
 	void SpriteRendererComp::Render(HDC hdc)
 	{
+		if ( m_texture == nullptr )
+		{
+			assert(false);
+		}
+
 		TransformComp* transform = GetOwner()->GetComponent<TransformComp>();
 		Vector2D pos = transform->GetPosition();
 
-		Gdiplus::Graphics graphics(hdc);
-		graphics.DrawImage(m_image, Gdiplus::Rect(static_cast<int>(pos.x), static_cast<int>(pos.y), m_imageWidth, m_imageHeight));
-	}
-
-	void SpriteRendererComp::ImageLoad(const std::wstring& path)
-	{
-		
-		const wstring combinedPath = DEFAULT_SPRITE_PATH + path + DEFAULT_SPRITE_EXT;
-		m_image = Gdiplus::Image::FromFile(combinedPath.c_str());
-
-		if (m_image == nullptr)
+		if(m_texture->GetTextureType() == Texture::ETextureType::bmp)
 		{
-			std::wcout << L"Image Load Failed : " << combinedPath << std::endl;
-			return;
+			//https://blog.naver.com/power2845/50147965306
+			TransparentBlt(hdc , pos.x , pos.y
+				, m_texture->GetWidth() * m_imageSize.x , m_texture->GetHeight() * m_imageSize.y
+				, m_texture->GetHdc() , 0 , 0 , m_texture->GetWidth() , m_texture->GetHeight()
+				, RGB(255 , 0 , 255));
 		}
-
-		m_imageWidth = m_image->GetWidth();
-		m_imageHeight = m_image->GetHeight();
+		else if(m_texture->GetTextureType() == Texture::ETextureType::png)
+		{
+			Gdiplus::Graphics graphics(hdc);
+			graphics.DrawImage(m_texture->GetImage(),Gdiplus::Rect(pos.x, pos.y, m_texture->GetWidth()*m_imageSize.x, m_texture->GetHeight()*m_imageSize.y));
+		}
 	}
 }

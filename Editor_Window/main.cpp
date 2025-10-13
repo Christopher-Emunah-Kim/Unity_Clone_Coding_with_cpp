@@ -6,6 +6,7 @@
 
 #include "../SOURCE/K_Application.h"
 #include "../Engine_Window/K_LoadScene.h"
+#include "../Engine_Window/K_LoadResources.h"
 
 ULONG_PTR gdiplusToken; //GDI+ 토큰
 Gdiplus::GdiplusStartupInput gdiplusStartupInput; //GDI+ 초기화 구조체
@@ -158,6 +159,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 
    //임시 로드 씬
+   KHS::LoadResources();
    KHS::LoadScenes();
 
    return TRUE;

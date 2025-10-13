@@ -1,10 +1,9 @@
-#pragma once
+﻿#pragma once
 #include "K_Component.h"	
+#include "K_Texture.h"
 
 namespace KHS
 {
-	const wstring DEFAULT_SPRITE_PATH = L"..\\Resources\\";
-	const wstring DEFAULT_SPRITE_EXT = L".png";
 
 	class SpriteRendererComp : public Component
 	{
@@ -14,15 +13,16 @@ namespace KHS
 
 		virtual void Initialize() override;
 		virtual void Update() override;
-		virtual void LastUpdate() override;
+		virtual void LateUpdate() override;
 		virtual void Render(HDC hdc) override;
 
-		void ImageLoad(const std::wstring& path);
+		inline void SetTexture(Texture* texture) { m_texture = texture; }
+		inline void SetSize(Vector2D size) { m_imageSize = size; }
 
 	private:
-		Gdiplus::Image* m_image;
-		UINT m_imageWidth;
-		UINT m_imageHeight;
+
+		Texture* m_texture;
+		Vector2D m_imageSize;
 	};
 }
 

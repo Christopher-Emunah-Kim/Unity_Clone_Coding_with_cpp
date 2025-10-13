@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "../SOURCE/K_GameObject.h"
 
 namespace KHS
@@ -15,5 +15,3 @@ namespace KHS
 
 	};
 }
-
-

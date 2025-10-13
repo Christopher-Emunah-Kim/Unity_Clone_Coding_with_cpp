@@ -7,6 +7,9 @@
     <Filter Include="Actor">
       <UniqueIdentifier>{ed676de6-7e68-4fb2-a6ed-e3432b81e564}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{45169eda-3ae8-481d-81ae-a719bd806b40}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="K_LoadScene.h">
@@ -20,6 +23,9 @@
     </ClInclude>
     <ClInclude Include="K_TitleScene.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="K_LoadResources.h">
+      <Filter>Resource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

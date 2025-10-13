@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "CommonInclude.h"
 #include "K_GameObject.h"
 
@@ -24,6 +24,8 @@ namespace KHS
 	public:
 		void Initialize(HWND hwnd, UINT width, UINT height);
 		void Run();
+
+		inline HDC GetHdc() { return m_hdc; }
 
 	private:
 		HWND m_hwnd;

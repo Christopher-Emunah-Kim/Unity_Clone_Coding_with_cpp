@@ -1,4 +1,4 @@
-#include "K_PlayScene.h"
+﻿#include "K_PlayScene.h"
 #include "K_Player.h"
 #include "K_TransformComp.h"
 #include "K_SpriteRendererComp.h"
@@ -6,6 +6,7 @@
 #include "K_TitleScene.h"
 #include "K_SceneManager.h"
 #include "K_ObjectInstantiate.h"
+#include "K_ResourceTable.h"
 
 namespace KHS
 {
@@ -16,11 +17,15 @@ namespace KHS
 
     void PlayScene::Initialize()
     {
-		m_background = ObjectInstantiate::Instantiate<Player>(ELayerType::BACKGROUND, Vector2D(0, 0));
+		//Resource Initialize before Object Instantiate
+		m_background = ObjectInstantiate::Instantiate<Player>(ELayerType::BACKGROUND);
 
 		SpriteRendererComp* sr = m_background->AddComponent<SpriteRendererComp>();
-		sr->SetName(L"SR");
-		sr->ImageLoad(L"CloudOcean");
+		Texture* bgTexture = ResourceTable::Find<Texture>(L"BG");
+		sr->SetTexture(bgTexture);
+
+		//Intialize Layer and GameObject
+		Scene::Initialize();
     }
 
     void PlayScene::Update()
