@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 namespace KHS
 {
@@ -11,5 +11,13 @@ namespace KHS
 		//MONSTER,
 		PLAYER,
 		MAX = 16,
+	};
+
+	enum class EResourceType : __int8
+	{
+		TEXTURE,
+		AUDIO,
+		PREFAB,
+		END,
 	};
 }
