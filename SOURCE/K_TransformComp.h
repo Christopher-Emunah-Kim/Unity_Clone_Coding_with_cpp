@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "K_Component.h"	
 
 namespace KHS
@@ -10,7 +10,7 @@ namespace KHS
 	public:
 		virtual void Initialize() override;
 		virtual void Update() override;
-		virtual void LastUpdate() override;
+		virtual void LateUpdate() override;
 		virtual void Render(HDC hdc) override;
 
 		void SetPosition(Vector2D pos);

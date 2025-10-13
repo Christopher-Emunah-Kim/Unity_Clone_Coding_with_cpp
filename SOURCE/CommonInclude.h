@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #ifndef DIRECTINPUT_VERSION
 #define DIRECTINPUT_VERSION 0x0800
@@ -14,6 +14,8 @@
 #include <map>
 #include <list>
 #include <string>
+
+#include <assert.h>
 
 #include <mmsystem.h>
 #include <dinput.h>

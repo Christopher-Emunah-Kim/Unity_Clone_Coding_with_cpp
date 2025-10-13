@@ -1,4 +1,4 @@
-
+﻿
 #include "K_GameObject.h"
 #include "K_Input.h"
 #include "K_Time.h"
@@ -48,7 +48,7 @@ namespace KHS
 	{
 		for (Component* component : m_components)
 		{
-			component->LastUpdate();
+			component->LateUpdate();
 		}
 	}
 

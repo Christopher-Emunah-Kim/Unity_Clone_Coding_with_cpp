@@ -1,4 +1,4 @@
-#include "K_TransformComp.h"
+﻿#include "K_TransformComp.h"
 #include "K_Input.h"
 #include "K_Time.h"
 
@@ -35,7 +35,7 @@ namespace KHS
 			m_position.y += moveDistance;
 		}
 	}
-	void TransformComp::LastUpdate()
+	void TransformComp::LateUpdate()
 	{
 	}
 	void TransformComp::Render(HDC hdc)

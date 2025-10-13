@@ -1,4 +1,4 @@
-#include "K_Component.h"
+﻿#include "K_Component.h"
 
 namespace KHS
 {
@@ -20,7 +20,7 @@ namespace KHS
 	{
 	}
 
-	void Component::LastUpdate()
+	void Component::LateUpdate()
 	{
 	}
 

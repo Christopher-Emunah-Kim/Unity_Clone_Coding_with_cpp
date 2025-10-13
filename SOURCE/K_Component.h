@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "K_Entity.h"
 
 namespace KHS
@@ -13,7 +13,7 @@ namespace KHS
 
 		virtual void Initialize();
 		virtual void Update();
-		virtual void LastUpdate();
+		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
 

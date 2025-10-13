@@ -31,6 +31,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Layer.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_Texture.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -75,6 +78,18 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Layer.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_ObjectInstantiate.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_ResourceTable.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_Resource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_Texture.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">
@@ -94,6 +109,9 @@
     </Filter>
     <Filter Include="Service">
       <UniqueIdentifier>{20d0e7da-55ba-49f1-8489-c3b10b171f17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{cc1d95a7-c211-4bfa-b289-462976fb0044}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
