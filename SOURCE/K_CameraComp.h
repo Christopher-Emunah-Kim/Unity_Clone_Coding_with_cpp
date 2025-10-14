@@ -16,6 +16,7 @@ namespace KHS
 		virtual void Render(HDC hdc) override;
 
 		Vector2D CalculatePosition(Vector2D pos);
+		Vector2D CalculateScale();
 		void SetResolution(const Vector2D& resolution);
 		
 		inline void SetTarget(GameObject* target) { m_target = target; }

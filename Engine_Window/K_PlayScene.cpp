@@ -30,7 +30,7 @@ namespace KHS
 		//Intialize Layer and GameObject
 		Scene::Initialize();
 
-		mainCamera->SetTarget(m_player);
+		//mainCamera->SetTarget(m_player);
     }
 
 	void PlayScene::InitializeMainCamera()
