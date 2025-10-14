@@ -29,13 +29,11 @@ namespace KHS
 
 		//Intialize Layer and GameObject
 		Scene::Initialize();
-
-		//mainCamera->SetTarget(m_player);
     }
 
 	void PlayScene::InitializeMainCamera()
 	{
-		GameObject* camera = ObjectInstantiate::Instantiate<GameObject>(ELayerType::NONE , Vector2D(344.0f , 442.0f));
+		GameObject* camera = ObjectInstantiate::Instantiate<GameObject>(ELayerType::NONE, Vector2D(800.0f, 450.0f));
 		CameraComp* cameraComp = camera->AddComponent<CameraComp>();
 		mainCamera = cameraComp;
 		cameraComp->SetResolution(Vector2D(1600.0f, 900.0f));
@@ -44,6 +42,9 @@ namespace KHS
 	void PlayScene::InitializePlayer()
 	{
 		m_player = ObjectInstantiate::Instantiate<Player>(ELayerType::PLAYER);
+
+		TransformComp* tr = m_player->GetComponent<TransformComp>();
+		tr->SetPosition(Vector2D(WINDOW_WIDTH / 2.0f , WINDOW_HEIGHT / 2.0f));
 
 		SpriteRendererComp* sr = m_player->AddComponent<SpriteRendererComp>();
 		sr->SetSize(Vector2D(3.0f , 3.0f));
@@ -57,8 +58,12 @@ namespace KHS
 	void PlayScene::InitializeBackground()
 	{
 		GameObject* background = ObjectInstantiate::Instantiate<GameObject>(ELayerType::BACKGROUND);
+
+		TransformComp* tr = background->GetComponent<TransformComp>();
+		tr->SetPosition(Vector2D(0.0f, 0.0f));
+
 		SpriteRendererComp* bgSr = background->AddComponent<SpriteRendererComp>();
-		bgSr->SetSize(Vector2D(1.0f , 1.0f));
+		bgSr->SetSize(Vector2D(2.0f , 2.0f));
 
 		Texture* bgTexture = ResourceTable::Find<Texture>(L"Map");
 		bgSr->SetTexture(bgTexture);
@@ -89,6 +94,8 @@ namespace KHS
 	void PlayScene::OnEnter()
 	{
 		Scene::OnEnter();
+		TransformComp* tr = m_player->GetComponent<TransformComp>();
+		tr->SetPosition(Vector2D(WINDOW_WIDTH/2.0f , WINDOW_HEIGHT/2.0f));
 	}
 	void PlayScene::OnExit()
 	{

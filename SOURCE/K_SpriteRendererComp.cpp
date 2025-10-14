@@ -35,7 +35,7 @@ namespace KHS
 		if(m_texture->GetTextureType() == Texture::ETextureType::bmp)
 		{
 			////https://blog.naver.com/power2845/50147965306
-			TransparentBlt(hdc , pos.x , pos.y
+			TransparentBlt(hdc , static_cast<float>(pos.x) , static_cast< float >( pos.y)
 				, m_texture->GetWidth() * m_imageSize.x , m_texture->GetHeight() * m_imageSize.y
 				, m_texture->GetHdc() , 0 , 0 , m_texture->GetWidth() , m_texture->GetHeight()
 				, RGB(255 , 0 , 255));
@@ -43,7 +43,7 @@ namespace KHS
 		else if(m_texture->GetTextureType() == Texture::ETextureType::png)
 		{
 			Gdiplus::Graphics graphics(hdc);
-			graphics.DrawImage(m_texture->GetImage(),Gdiplus::Rect(pos.x, pos.y, m_texture->GetWidth()*m_imageSize.x, m_texture->GetHeight()*m_imageSize.y));
+			graphics.DrawImage(m_texture->GetImage(),Gdiplus::Rect(static_cast< float >( pos.x ) , static_cast< float >( pos.y ) , m_texture->GetWidth()*m_imageSize.x, m_texture->GetHeight()*m_imageSize.y));
 		}
 	}
 }

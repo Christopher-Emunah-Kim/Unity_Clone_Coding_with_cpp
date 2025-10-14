@@ -49,25 +49,7 @@ namespace KHS
 	}
 	Vector2D CameraComp::CalculatePosition(Vector2D pos)
 	{
-		Vector2D viewPos =  pos - m_distance;
-
-		Vector2D scale = CalculateScale();
-
-		viewPos.x *= scale.x;
-		viewPos.y *= scale.y;
-
-		return viewPos;
-	}
-	Vector2D CameraComp::CalculateScale()
-	{
-		Vector2D scale = Vector2D::One;
-
-		if ( m_resolution.x != 0.0f && m_resolution.y != 0.0f )
-		{
-			scale.x = static_cast< float >( app.GetWidth() ) / m_resolution.x;
-			scale.y = static_cast< float >( app.GetHeight() ) / m_resolution.y;
-		}
-		return scale;
+		return pos - m_distance;
 	}
 	void CameraComp::SetResolution(const Vector2D& resolution)
 	{
