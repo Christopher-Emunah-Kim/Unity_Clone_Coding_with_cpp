@@ -16,12 +16,16 @@ namespace KHS
 		virtual void Render(HDC hdc) override;
 
 		Vector2D CalculatePosition(Vector2D pos);
+		void SetResolution(const Vector2D& resolution);
+		
+		inline void SetTarget(GameObject* target) { m_target = target; }
 
 	private:
 		GameObject* m_target;
 		Vector2D m_distance;
 		Vector2D m_resolution;
 		Vector2D m_lookPosition;
+		bool m_bUseCustomResolution;
 	};
 }
 

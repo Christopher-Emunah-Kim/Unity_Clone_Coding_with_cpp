@@ -9,7 +9,7 @@ namespace KHS
 {
 	CameraComp::CameraComp()
 		:Component(EComponentType::CAMERA) , m_target(nullptr) , m_distance(Vector2D::Zero), 
-		m_resolution(Vector2D(1600, 900)), m_lookPosition(Vector2D::Zero)
+		m_resolution(Vector2D(1600 , 900)) , m_lookPosition(Vector2D::Zero) , m_bUseCustomResolution(false)
 	{
 	}
 	
@@ -19,8 +19,11 @@ namespace KHS
 
 	void CameraComp::Initialize()
 	{
-		m_resolution.x = app.GetWidth();
-		m_resolution.y = app.GetHeight();
+		if ( m_bUseCustomResolution == false )
+		{
+			m_resolution.x = app.GetWidth();
+			m_resolution.y = app.GetHeight();
+		}
 	}
 	void CameraComp::Update()
 	{
@@ -47,5 +50,10 @@ namespace KHS
 	Vector2D CameraComp::CalculatePosition(Vector2D pos)
 	{
 		return pos - m_distance;
+	}
+	void CameraComp::SetResolution(const Vector2D& resolution)
+	{
+		m_resolution = resolution;
+		m_bUseCustomResolution = true;
 	}
 }

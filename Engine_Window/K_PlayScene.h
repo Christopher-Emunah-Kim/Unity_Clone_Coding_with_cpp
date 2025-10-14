@@ -12,6 +12,7 @@ namespace KHS
 		virtual ~PlayScene() = default;
 
 	private:
+		void InitializeMainCamera();
 		void InitializePlayer();
 		void InitializeBackground();
 

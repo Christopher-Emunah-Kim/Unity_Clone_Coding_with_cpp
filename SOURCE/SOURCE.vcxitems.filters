@@ -47,7 +47,7 @@
       <Filter>Component</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)K_MainCamera.cpp">
-      <Filter>Util</Filter>
+      <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -112,7 +112,7 @@
       <Filter>Util</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)K_MainCamera.h">
-      <Filter>Util</Filter>
+      <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +136,9 @@
     </Filter>
     <Filter Include="Resource">
       <UniqueIdentifier>{cc1d95a7-c211-4bfa-b289-462976fb0044}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{747e7999-cc00-4b00-bc7f-c7a75d9250a7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

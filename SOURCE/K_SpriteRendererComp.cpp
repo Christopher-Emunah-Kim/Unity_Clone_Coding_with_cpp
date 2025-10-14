@@ -34,7 +34,7 @@ namespace KHS
 
 		if(m_texture->GetTextureType() == Texture::ETextureType::bmp)
 		{
-			//https://blog.naver.com/power2845/50147965306
+			////https://blog.naver.com/power2845/50147965306
 			TransparentBlt(hdc , pos.x , pos.y
 				, m_texture->GetWidth() * m_imageSize.x , m_texture->GetHeight() * m_imageSize.y
 				, m_texture->GetHdc() , 0 , 0 , m_texture->GetWidth() , m_texture->GetHeight()
