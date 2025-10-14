@@ -1,6 +1,7 @@
 ﻿#include "K_SpriteRendererComp.h"
 #include "K_TransformComp.h"
 #include "K_GameObject.h"
+#include "K_MainCamera.h"
 
 namespace KHS
 {
@@ -29,6 +30,7 @@ namespace KHS
 
 		TransformComp* transform = GetOwner()->GetComponent<TransformComp>();
 		Vector2D pos = transform->GetPosition();
+		pos = mainCamera->CalculatePosition(pos);
 
 		if(m_texture->GetTextureType() == Texture::ETextureType::bmp)
 		{

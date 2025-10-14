@@ -28,11 +28,8 @@
 #pragma comment(lib, "Gdiplus.lib")
 
 
-
 #include "K_Math.h"
 #include "K_Enums.h"
-
-
 
 using namespace std;
 

@@ -43,6 +43,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)K_ResourceTable.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_CameraComp.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_MainCamera.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -59,9 +65,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Component.h">
       <Filter>Component</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)K_Entity.h">
-      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Scene.h">
       <Filter>Scene</Filter>
@@ -101,6 +104,15 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)K_ScriptComp.h">
       <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_CameraComp.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_Entity.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_MainCamera.h">
+      <Filter>Util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

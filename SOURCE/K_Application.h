@@ -26,6 +26,8 @@ namespace KHS
 		void Run();
 
 		inline HDC GetHdc() { return m_hdc; }
+		inline UINT GetWidth() { return WINDOW_WIDTH; }
+		inline UINT GetHeight() { return WINDOW_HEIGHT; }
 
 	private:
 		HWND m_hwnd;

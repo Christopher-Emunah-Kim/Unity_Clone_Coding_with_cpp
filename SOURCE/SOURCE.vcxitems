@@ -15,6 +15,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_CameraComp.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Entity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Enums.h" />
@@ -22,6 +23,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Application.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Input.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Layer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_MainCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Math.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_ObjectInstantiate.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Resource.h" />
@@ -35,11 +37,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)K_TransformComp.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_CameraComp.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_GameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Application.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Input.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Layer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_MainCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Math.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_ResourceTable.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Scene.cpp" />

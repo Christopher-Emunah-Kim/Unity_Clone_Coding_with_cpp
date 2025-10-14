@@ -8,6 +8,8 @@
 #include "K_ObjectInstantiate.h"
 #include "K_ResourceTable.h"
 #include "K_PlayerScript.h"
+#include "K_CameraComp.h"
+#include "K_MainCamera.h"
 
 namespace KHS
 {
@@ -18,6 +20,11 @@ namespace KHS
 
     void PlayScene::Initialize()
     {
+		//Main Camera
+		GameObject* camera = ObjectInstantiate::Instantiate<GameObject>(ELayerType::NONE, Vector2D(344.0f, 442.0f));
+		CameraComp* cameraComp = camera->AddComponent<CameraComp>();
+		mainCamera = cameraComp;
+
 		//Resource Initialize before Object Instantiate
 		InitializePlayer();
 		InitializeBackground();
