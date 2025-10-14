@@ -23,7 +23,7 @@ namespace KHS::ObjectInstantiate
 	}
 
 	template <typename T>
-	static T* Instantiate(ELayerType type, Math::Vector2D pos)
+	static T* Instantiate(ELayerType type, Vector2D pos)
 	{
 		T* gameObject = new T();
 

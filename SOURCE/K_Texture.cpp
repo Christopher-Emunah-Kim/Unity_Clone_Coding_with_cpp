@@ -6,7 +6,7 @@ extern KHS::Application app;
 namespace KHS
 {
 	Texture::Texture()
-		:Resource(EResourceType::TEXTURE)
+		:Resource(EResourceType::TEXTURE) , m_type(ETextureType::NONE) , m_image(nullptr) , m_bitmap(nullptr) , m_hdc(nullptr) , m_width(0) , m_height(0)
 	{
 	}
 
@@ -37,7 +37,7 @@ namespace KHS
 		if(ext == L"bmp")
 		{
 			m_type = ETextureType::bmp;
-			m_bitmap = ( HBITMAP ) LoadImage(NULL , path.c_str() , IMAGE_BITMAP , 0 , 0 , LR_LOADFROMFILE | LR_CREATEDIBSECTION);
+			m_bitmap = ( HBITMAP ) LoadImage(nullptr , path.c_str() , IMAGE_BITMAP , 0 , 0 , LR_LOADFROMFILE | LR_CREATEDIBSECTION);
 
 			if ( m_bitmap == nullptr )
 			{

@@ -10,6 +10,7 @@ namespace KHS
 
 	GameObject::GameObject()
 	{
+		m_components.resize(( UINT ) EComponentType::END);
 		AddTransformComp();
 	}
 
@@ -31,6 +32,11 @@ namespace KHS
 	{
 		for(Component* component : m_components)
 		{
+			if(component == nullptr)
+			{
+				continue;
+			}
+
 			component->Initialize();
 		}
 	}
@@ -39,6 +45,11 @@ namespace KHS
 	{
 		for (Component* component : m_components)
 		{
+			if ( component == nullptr )
+			{
+				continue;
+			}
+
 			component->Update();
 		}
 	}
@@ -48,6 +59,11 @@ namespace KHS
 	{
 		for (Component* component : m_components)
 		{
+			if ( component == nullptr )
+			{
+				continue;
+			}
+
 			component->LateUpdate();
 		}
 	}
@@ -56,6 +72,11 @@ namespace KHS
 	{
 		for (Component* component : m_components)
 		{
+			if ( component == nullptr )
+			{
+				continue;
+			}
+
 			component->Render(hdc);
 		}
 	}

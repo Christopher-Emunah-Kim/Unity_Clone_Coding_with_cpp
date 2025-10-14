@@ -8,7 +8,7 @@ namespace KHS
 	class Component : public Entity
 	{
 	public:
-		Component();
+		Component(EComponentType type);
 		~Component();
 
 		virtual void Initialize();
@@ -19,9 +19,11 @@ namespace KHS
 
 		inline void SetOwner(GameObject* owner) { m_owner = owner; }
 		inline GameObject* GetOwner() { return m_owner; }
+		inline EComponentType GetType() { return m_type; }
 
 	private:
 		GameObject* m_owner;
+		EComponentType m_type;
 	};
 }
 

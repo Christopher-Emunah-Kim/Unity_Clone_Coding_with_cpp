@@ -3,8 +3,8 @@
 namespace KHS
 {
 
-	Component::Component()
-		:m_owner(nullptr)
+	Component::Component(EComponentType type)
+		:m_owner(nullptr) , m_type(type)
 	{
 	}
 

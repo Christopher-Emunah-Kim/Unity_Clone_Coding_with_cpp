@@ -3,11 +3,12 @@
 
 namespace KHS
 {
-	using namespace Math;
-
 	class TransformComp : public Component
 	{
 	public:
+		TransformComp();
+		virtual ~TransformComp();
+
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;

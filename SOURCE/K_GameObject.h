@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "CommonInclude.h"
 #include "K_Component.h"
 
@@ -29,7 +29,7 @@ namespace KHS
 			component->Initialize();
 			component->SetOwner(this);
 
-			m_components.push_back(component);
+			m_components[(UINT)component->GetType()] = component;
 
 			return component;
 		}

@@ -4,6 +4,13 @@
 
 namespace KHS
 {
+	TransformComp::TransformComp()
+		:Component(EComponentType::TRANSFORM), m_position(Vector2D::Zero)
+	{
+	}
+	TransformComp::~TransformComp()
+	{
+	}
 	void TransformComp::Initialize()
 	{
 	}

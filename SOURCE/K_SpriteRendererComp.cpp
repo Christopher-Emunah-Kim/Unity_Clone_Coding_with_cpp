@@ -5,7 +5,7 @@
 namespace KHS
 {
 	SpriteRendererComp::SpriteRendererComp()
-		:Component(), m_texture(nullptr), m_imageSize(Vector2D::One)
+		:Component(EComponentType::SPRITERENDERER), m_texture(nullptr), m_imageSize(Vector2D::One)
 	{
 	}
 	SpriteRendererComp::~SpriteRendererComp()

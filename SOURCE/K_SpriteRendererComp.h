@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "K_Component.h"	
 #include "K_Texture.h"
+#include "K_Math.h"
 
 namespace KHS
 {
@@ -20,7 +21,6 @@ namespace KHS
 		inline void SetSize(Vector2D size) { m_imageSize = size; }
 
 	private:
-
 		Texture* m_texture;
 		Vector2D m_imageSize;
 	};
