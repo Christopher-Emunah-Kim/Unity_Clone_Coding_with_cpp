@@ -10,6 +10,9 @@
     <Filter Include="Resource">
       <UniqueIdentifier>{45169eda-3ae8-481d-81ae-a719bd806b40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Script">
+      <UniqueIdentifier>{71ccc701-2de8-450a-962d-779c624e2c4a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="K_LoadScene.h">
@@ -27,6 +30,9 @@
     <ClInclude Include="K_LoadResources.h">
       <Filter>Resource</Filter>
     </ClInclude>
+    <ClInclude Include="K_PlayerScript.h">
+      <Filter>Script</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="K_PlayScene.cpp">
@@ -37,6 +43,9 @@
     </ClCompile>
     <ClCompile Include="K_TitleScene.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="K_PlayerScript.cpp">
+      <Filter>Script</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

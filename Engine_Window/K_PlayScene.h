@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "../SOURCE/K_Scene.h"
 
 namespace KHS
@@ -12,6 +12,7 @@ namespace KHS
 		virtual ~PlayScene() = default;
 
 		virtual void Initialize() override;
+		void InitializeBackground();
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render(HDC hdc) override;
@@ -20,6 +21,6 @@ namespace KHS
 		virtual void OnExit() override;
 
 	private:
-		Player* m_background;
+		Player* m_player;
 	};
 }

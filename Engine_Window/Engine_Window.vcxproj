@@ -130,12 +130,14 @@
   <ItemGroup>
     <ClInclude Include="K_LoadResources.h" />
     <ClInclude Include="K_Player.h" />
+    <ClInclude Include="K_PlayerScript.h" />
     <ClInclude Include="K_PlayScene.h" />
     <ClInclude Include="K_LoadScene.h" />
     <ClInclude Include="K_TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="K_Player.cpp" />
+    <ClCompile Include="K_PlayerScript.cpp" />
     <ClCompile Include="K_PlayScene.cpp" />
     <ClCompile Include="K_TitleScene.cpp" />
   </ItemGroup>
