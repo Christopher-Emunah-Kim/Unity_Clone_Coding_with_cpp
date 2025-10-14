@@ -6,6 +6,7 @@ namespace KHS
 {
 	void LoadResources()
 	{
-		ResourceTable::Load<Texture>(L"BG", L"CloudOcean.png");
+		ResourceTable::Load<Texture>(L"Map", L"CloudOcean.png");
+		ResourceTable::Load<Texture>(L"PackMan", L"PackMan_R1.png");
 	}
 }

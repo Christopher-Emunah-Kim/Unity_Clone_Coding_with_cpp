@@ -19,6 +19,15 @@ namespace KHS
     void PlayScene::Initialize()
     {
 		//Resource Initialize before Object Instantiate
+		InitializePlayer();
+		InitializeBackground();
+
+		//Intialize Layer and GameObject
+		Scene::Initialize();
+    }
+
+	void PlayScene::InitializePlayer()
+	{
 		m_player = ObjectInstantiate::Instantiate<Player>(ELayerType::PLAYER);
 
 		SpriteRendererComp* sr = m_player->AddComponent<SpriteRendererComp>();
@@ -26,14 +35,9 @@ namespace KHS
 
 		m_player->AddComponent<PlayerScript>();
 
-		Texture* playerTexture = ResourceTable::Find<Texture>(L"PackMan_R1");
+		Texture* playerTexture = ResourceTable::Find<Texture>(L"PackMan");
 		sr->SetTexture(playerTexture);
-
-		InitializeBackground();
-
-		//Intialize Layer and GameObject
-		Scene::Initialize();
-    }
+	}
 
 	void PlayScene::InitializeBackground()
 	{
@@ -41,7 +45,7 @@ namespace KHS
 		SpriteRendererComp* bgSr = background->AddComponent<SpriteRendererComp>();
 		bgSr->SetSize(Vector2D(800.0f , 600.0f));
 
-		Texture* bgTexture = ResourceTable::Find<Texture>(L"Background");
+		Texture* bgTexture = ResourceTable::Find<Texture>(L"Map");
 		bgSr->SetTexture(bgTexture);
 	}
 

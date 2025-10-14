@@ -11,8 +11,12 @@ namespace KHS
 		PlayScene();
 		virtual ~PlayScene() = default;
 
-		virtual void Initialize() override;
+	private:
+		void InitializePlayer();
 		void InitializeBackground();
+
+	public:
+		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render(HDC hdc) override;
