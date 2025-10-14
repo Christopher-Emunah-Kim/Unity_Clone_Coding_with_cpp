@@ -28,6 +28,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)K_ResourceTable.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Scene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_SceneManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_ScriptComp.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_SpriteRendererComp.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Texture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Time.h" />
@@ -39,8 +40,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Application.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Input.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Layer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_Math.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_ResourceTable.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Scene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_SceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_ScriptComp.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_SpriteRendererComp.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Texture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Time.cpp" />

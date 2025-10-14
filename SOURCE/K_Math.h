@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-namespace KHS::Math
+namespace KHS
 {
 	struct Vector2D
 	{
@@ -14,12 +14,31 @@ namespace KHS::Math
 		{
 		}
 
+		Vector2D operator+(const Vector2D& other) const
+		{
+			return Vector2D(x + other.x, y + other.y);
+		}
+
+		Vector2D operator-(const Vector2D& other) const
+		{
+			return Vector2D(x - other.x, y - other.y);
+		}
+
+		Vector2D operator/(float scalar) const
+		{
+			return Vector2D(x / scalar, y / scalar);
+		}
+
+		Vector2D operator*(float scalar) const
+		{
+			return Vector2D(x * scalar, y * scalar);
+		}
+
+
 		float x;
 		float y;
 
 		static const Vector2D Zero;
 		static const Vector2D One;
 	};
-	static const Vector2D Zero = Vector2D(0.0f , 0.0f);
-	static const Vector2D One = Vector2D(1.0f , 1.0f);
 }

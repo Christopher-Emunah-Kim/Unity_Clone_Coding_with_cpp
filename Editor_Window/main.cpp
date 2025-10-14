@@ -18,7 +18,7 @@ HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 
-KHS::Application application; //애플리케이션 객체
+KHS::Application app; //애플리케이션 객체
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -80,7 +80,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, //프로그램 인스턴스 핸�
         else
         {
             //게임 로직 및 렌더링
-            application.Run();
+			app.Run();
         }
     }
 
@@ -143,7 +143,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
        WINDOW_WIDTH, WINDOW_HEIGHT, //윈도우 스타일에 맞춰 조정된 너비와 높이
        nullptr, nullptr, hInstance, nullptr);
 
-   application.Initialize(hWnd, WINDOW_WIDTH, WINDOW_HEIGHT); //애플리케이션 초기화
+   app.Initialize(hWnd, WINDOW_WIDTH, WINDOW_HEIGHT); //애플리케이션 초기화
 
 
    if (!hWnd)

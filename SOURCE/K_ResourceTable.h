@@ -1,9 +1,10 @@
 ﻿#pragma once
-#include "K_Resource.h"
+#include "CommonInclude.h"
 
 namespace KHS
 {
 	const wstring DEFAULT_RESOURCE_PATH = L"..\\Resources\\";
+	class Resource;
 
 	class ResourceTable
 	{
@@ -12,9 +13,11 @@ namespace KHS
 		template<typename T>
 		static T* Find(const std::wstring& key)
 		{
-			auto iter = m_resouces.find(key);
-			if (iter == m_resources.end())
+			auto iter = m_resources.find(key);
+			if ( iter == m_resources.end() )
+			{
 				return nullptr;
+			}
 
 			return dynamic_cast< T* >( iter->second );
 		}
