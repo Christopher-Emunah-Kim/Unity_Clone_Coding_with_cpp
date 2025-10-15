@@ -50,7 +50,7 @@ namespace KHS
 			Gdiplus::ImageAttributes imageAttr = {};
 
 			imageAttr.SetColorKey(
-				Gdiplus::Color(230 , 0 , 230 , 230) , //light magenta
+				Gdiplus::Color(230 , 0 , 230 , 230) ,
 				Gdiplus::Color(255 , 0 , 255 , 255) , //magenta
 				Gdiplus::ColorAdjustTypeBitmap);
 

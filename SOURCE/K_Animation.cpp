@@ -60,10 +60,10 @@ namespace KHS
 
 	void Animation::Render(HDC hdc)
 	{
-		if ( m_bComplete )
+		/*if ( m_bComplete )
 		{
 			return;
-		}
+		}*/
 
 		if ( m_currentIndex < 0 || m_currentIndex >= static_cast<int>(m_animaionSheet.size()) )
 		{

@@ -3,14 +3,27 @@
 
 namespace KHS
 {
+	class AnimatorComp;
 	class PlayerScript : public ScriptComp
 	{
 	public:
+		enum class EPlayerState
+		{
+			IDLE,
+			SITDOWN,
+			WALK,
+			SLEEP,
+			ATTACK,
+			DIE,
+			END
+		};
+
 		PlayerScript();
 		virtual ~PlayerScript();
 
 	private:
-		void UpdatePlayerPosition();
+		void PlayerMove();
+		void PlayerSitDown();
 
 	public:
 		virtual void Initialize() override;
@@ -19,7 +32,8 @@ namespace KHS
 		virtual void Render(HDC hdc) override;
 
 	private:
-
+		EPlayerState m_state;
+		AnimatorComp* m_animator;
 	};
 }
 

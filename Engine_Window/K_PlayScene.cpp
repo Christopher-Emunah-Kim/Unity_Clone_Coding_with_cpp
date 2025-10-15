@@ -34,7 +34,7 @@ namespace KHS
 
 	void PlayScene::InitializeMainCamera()
 	{
-		GameObject* camera = ObjectInstantiate::Instantiate<GameObject>(ELayerType::NONE, Vector2D(800.0f, 450.0f));
+		GameObject* camera = ObjectInstantiate::Instantiate<GameObject>(ELayerType::PARTICLE, Vector2D(800.0f, 450.0f));
 		CameraComp* cameraComp = camera->AddComponent<CameraComp>();
 		mainCamera = cameraComp;
 		cameraComp->SetResolution(Vector2D(1600.0f, 900.0f));
@@ -51,10 +51,10 @@ namespace KHS
 
 		/*SpriteRendererComp* sr = m_player->AddComponent<SpriteRendererComp>();
 		sr->SetSize(Vector2D(3.0f , 3.0f));*/
-
-		Texture* playerTexture = ResourceTable::Find<Texture>(L"Cat");
 		//Texture* playerTexture = ResourceTable::Find<Texture>(L"PackMan");
 		//sr->SetTexture(playerTexture);
+
+		Texture* playerTexture = ResourceTable::Find<Texture>(L"Cat");
 
 		AnimatorComp* animator = m_player->AddComponent<AnimatorComp>();
 		animator->CreateAnimation(L"CatBackMove", playerTexture, 
@@ -65,7 +65,18 @@ namespace KHS
 			Vector2D(0.0f , 64.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
 		animator->CreateAnimation(L"CatLeftMove" , playerTexture ,
 			Vector2D(0.0f , 96.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
-		animator->PlayAnmation(L"CatRightMove" , true);
+		animator->CreateAnimation(L"CatSitDown" , playerTexture ,
+			Vector2D(0.0f , 128.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		animator->CreateAnimation(L"CatGrooming" , playerTexture ,
+			Vector2D(0.0f , 160.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		animator->CreateAnimation(L"CatSleep" , playerTexture ,
+			Vector2D(0.0f , 192.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+
+
+		animator->PlayAnmation(L"CatSitDown" , true);
+
+		tr->SetPosition(Vector2D(100.0f , 100.0f));
+		tr->SetScale(Vector2D(2.0f , 2.0f));
 	}
 
 	void PlayScene::InitializeBackground()
@@ -76,9 +87,9 @@ namespace KHS
 		tr->SetPosition(Vector2D(0.0f, 0.0f));
 
 		SpriteRendererComp* bgSr = background->AddComponent<SpriteRendererComp>();
-		bgSr->SetSize(Vector2D(2.0f , 2.0f));
+		bgSr->SetSize(Vector2D(1.0f , 1.0f));
 
-		Texture* bgTexture = ResourceTable::Find<Texture>(L"Map");
+		Texture* bgTexture = ResourceTable::Find<Texture>(L"CloudOcean");
 		bgSr->SetTexture(bgTexture);
 	}
 
