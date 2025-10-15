@@ -52,18 +52,20 @@ namespace KHS
 		/*SpriteRendererComp* sr = m_player->AddComponent<SpriteRendererComp>();
 		sr->SetSize(Vector2D(3.0f , 3.0f));*/
 
-		//Texture* playerTexture = ResourceTable::Find<Texture>(L"Cat");
-		Texture* playerTexture = ResourceTable::Find<Texture>(L"Chicken");
+		Texture* playerTexture = ResourceTable::Find<Texture>(L"Cat");
 		//Texture* playerTexture = ResourceTable::Find<Texture>(L"PackMan");
 		//sr->SetTexture(playerTexture);
 
 		AnimatorComp* animator = m_player->AddComponent<AnimatorComp>();
-		//animator->CreateAnimation(L"CatFrontMove", playerTexture, 
-		//	Vector2D(0.0f , 0.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
-		animator->CreateAnimation(L"ChickenFrontMove", playerTexture, 
-			Vector2D(0.0f , 0.0f) , Vector2D(16.0f , 16.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
-		//animator->PlayAnmation(L"CatFrontMove" , true);
-		animator->PlayAnmation(L"ChickenFrontMove" , true);
+		animator->CreateAnimation(L"CatBackMove", playerTexture, 
+			Vector2D(0.0f , 0.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		animator->CreateAnimation(L"CatRightMove", playerTexture,
+			Vector2D(0.0f , 32.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		animator->CreateAnimation(L"CatFrontMove", playerTexture,
+			Vector2D(0.0f , 64.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		animator->CreateAnimation(L"CatLeftMove" , playerTexture ,
+			Vector2D(0.0f , 96.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		animator->PlayAnmation(L"CatRightMove" , true);
 	}
 
 	void PlayScene::InitializeBackground()

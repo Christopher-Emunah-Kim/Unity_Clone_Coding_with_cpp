@@ -95,6 +95,7 @@ namespace KHS
 		func.BlendFlags = 0;
 		func.AlphaFormat = AC_SRC_ALPHA;
 		func.SourceConstantAlpha = 125; //0(transparent) ~ 255(opaque)
+		//TODO : 피격 시 투명도 조절
 
 		SpriteInfo sprite = m_animaionSheet[ m_currentIndex ];
 		HDC spriteHdc = m_spriteTexture->GetHdc();
