@@ -40,7 +40,7 @@ namespace KHS
 	void PlayerScript::UpdatePlayerPosition()
 	{
 
-		if ( Input::GetKeyDown(EKeyCode::RightArrow) )
+		if ( Input::GetKey(EKeyCode::D) )
 		{
 			TransformComp* tr = GetOwner()->GetComponent<TransformComp>();
 			Vector2D pos = tr->GetPosition();
@@ -49,7 +49,7 @@ namespace KHS
 			tr->SetPosition(pos);
 		}
 
-		if ( Input::GetKeyDown(EKeyCode::LeftArrow) )
+		if ( Input::GetKey(EKeyCode::A) )
 		{
 			TransformComp* tr = GetOwner()->GetComponent<TransformComp>();
 			Vector2D pos = tr->GetPosition();
@@ -58,7 +58,7 @@ namespace KHS
 			tr->SetPosition(pos);
 		}
 
-		if ( Input::GetKeyDown(EKeyCode::UpArrow) )
+		if ( Input::GetKey(EKeyCode::W) )
 		{
 			TransformComp* tr = GetOwner()->GetComponent<TransformComp>();
 			Vector2D pos = tr->GetPosition();
@@ -67,7 +67,7 @@ namespace KHS
 			tr->SetPosition(pos);
 		}
 
-		if ( Input::GetKeyDown(EKeyCode::DownArrow) )
+		if ( Input::GetKey(EKeyCode::S) )
 		{
 			TransformComp* tr = GetOwner()->GetComponent<TransformComp>();
 			Vector2D pos = tr->GetPosition();

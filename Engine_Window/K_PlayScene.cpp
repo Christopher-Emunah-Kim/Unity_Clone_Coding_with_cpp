@@ -102,6 +102,6 @@ namespace KHS
 		Scene::OnExit();
 
 		TransformComp* tr = m_player->GetComponent<TransformComp>();
-		tr->SetPosition(Vector2D(0, 0));
+		tr->SetPosition(Vector2D(WINDOW_WIDTH / 2.0f , WINDOW_HEIGHT / 2.0f));
 	}
 }
