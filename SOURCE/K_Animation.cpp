@@ -79,38 +79,83 @@ namespace KHS
 		TransformComp* tr = owner->GetComponent<TransformComp>();
 		Vector2D pos = tr->GetPosition();
 
+
 		if ( mainCamera )
 		{
 			pos = mainCamera->CalculatePosition(pos);
 		}
 
 		//Alpha Blending(이미지에 알파채널이 있어야함)
-		ProcessAlphaBlending(hdc , pos);
+		ProcessAlphaBlending(hdc ,tr, pos);
 	}
 
-	void Animation::ProcessAlphaBlending(HDC hdc , Vector2D& pos)
+	void Animation::ProcessAlphaBlending(HDC hdc , TransformComp* tr , Vector2D& pos)
 	{
-		BLENDFUNCTION func = {};
-		func.BlendOp = AC_SRC_OVER;
-		func.BlendFlags = 0;
-		func.AlphaFormat = AC_SRC_ALPHA;
-		func.SourceConstantAlpha = 125; //0(transparent) ~ 255(opaque)
-		//TODO : 피격 시 투명도 조절
-
 		SpriteInfo sprite = m_animaionSheet[ m_currentIndex ];
-		HDC spriteHdc = m_spriteTexture->GetHdc();
+		Texture::ETextureType type = m_spriteTexture->GetTextureType();
 
-		AlphaBlend(hdc ,
-			static_cast<int>( pos.x ) ,
-			static_cast<int>( pos.y ) ,
-			static_cast<int>( sprite.size.x * 5 ) ,
-			static_cast<int>( sprite.size.y * 5 ) ,
-			spriteHdc ,
-			static_cast<int>( sprite.leftTop.x ) ,
-			static_cast<int>( sprite.leftTop.y ) ,
-			static_cast<int>( sprite.size.x ) ,
-			static_cast<int>( sprite.size.y ) ,
-			func);
+		if ( type == Texture::ETextureType::bmp )
+		{
+			BLENDFUNCTION func = {};
+			func.BlendOp = AC_SRC_OVER;
+			func.BlendFlags = 0;
+			func.AlphaFormat = AC_SRC_ALPHA;
+			func.SourceConstantAlpha = 125; //0(transparent) ~ 255(opaque)
+			//TODO : 피격 시 투명도 조절
+
+			HDC spriteHdc = m_spriteTexture->GetHdc();
+
+			AlphaBlend(hdc ,
+				static_cast< int >( pos.x ) ,
+				static_cast< int >( pos.y ) ,
+				static_cast< int >( sprite.size.x * 5 ) ,
+				static_cast< int >( sprite.size.y * 5 ) ,
+				spriteHdc ,
+				static_cast< int >( sprite.leftTop.x ) ,
+				static_cast< int >( sprite.leftTop.y ) ,
+				static_cast< int >( sprite.size.x ) ,
+				static_cast< int >( sprite.size.y ) ,
+				func);
+		}
+		else if( type == Texture::ETextureType::png )
+		{
+			//make pixel transparent
+			Gdiplus::ImageAttributes imageAttr = {};
+
+			//투명화시킬 색 범위 지정
+			imageAttr.SetColorKey(
+				Gdiplus::Color(230, 0, 230, 230) , //light magenta
+				Gdiplus::Color(255, 0, 255, 255) , //magenta
+				Gdiplus::ColorAdjustTypeBitmap);
+
+			Gdiplus::Graphics graphics(hdc);
+
+			float rot = tr->GetRotation();
+			graphics.TranslateTransform(pos.x , pos.y);
+			graphics.RotateTransform(rot);
+			graphics.TranslateTransform(-pos.x , -pos.y);
+
+			Vector2D scale = tr->GetScale();
+			graphics.DrawImage(
+				m_spriteTexture->GetImage() ,
+				Gdiplus::Rect
+				(
+					pos.x - ( sprite.size.x / 2.0f )
+					, pos.y - ( sprite.size.y / 2.0f )
+					, sprite.size.x * scale.x
+					, sprite.size.y * scale.y
+				) ,
+				sprite.leftTop.x , sprite.leftTop.y ,
+				sprite.size.x , sprite.size.y ,
+				Gdiplus::UnitPixel ,
+				/*&imageAttr*/nullptr);
+		}
+		else
+		{
+			assert(false);
+			return;
+		}
+
 	}
 
 	void Animation::Reset()

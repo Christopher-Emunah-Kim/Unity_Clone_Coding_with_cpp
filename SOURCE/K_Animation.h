@@ -5,6 +5,7 @@
 namespace KHS
 {
 	class AnimatorComp;
+	class TransformComp;
 
 	class Animation : public Resource
 	{
@@ -28,7 +29,7 @@ namespace KHS
 		virtual ~Animation();
 
 	private:
-		void ProcessAlphaBlending(HDC hdc , Vector2D& pos);
+		void ProcessAlphaBlending(HDC hdc , TransformComp* tr, Vector2D& pos);
 
 	public:
 		virtual HRESULT Load(const std::wstring& path) override;

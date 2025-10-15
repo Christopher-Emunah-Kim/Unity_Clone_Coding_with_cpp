@@ -5,7 +5,8 @@
 namespace KHS
 {
 	TransformComp::TransformComp()
-		:Component(EComponentType::TRANSFORM), m_position(Vector2D::Zero)
+		:Component(EComponentType::TRANSFORM) , m_position(Vector2D::Zero) , 
+		m_scale(Vector2D::One) , m_rotation(0.0f)
 	{
 	}
 	TransformComp::~TransformComp()
@@ -52,5 +53,14 @@ namespace KHS
 	{
 		m_position.x = pos.x;
 		m_position.y = pos.y;
+	}
+	void TransformComp::SetRotation(float rotate)
+	{
+		m_rotation = rotate;
+	}
+	void TransformComp::SetScale(Vector2D scale)
+	{
+		m_scale.x = scale.x;
+		m_scale.y = scale.y;
 	}
 }

@@ -23,6 +23,7 @@ namespace KHS
 		//CHARACTER,
 		//MONSTER,
 		PLAYER,
+		PARTICLE,
 		MAX = 16,
 	};
 

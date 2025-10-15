@@ -10,5 +10,7 @@ namespace KHS
 		ResourceTable::Load<Texture>(L"PackMan", L"img\\PackMan_R1.png");
 		ResourceTable::Load<Texture>(L"Chicken", L"img\\chicken.bmp");
 		ResourceTable::Load<Texture>(L"Cat", L"img\\ChickenAlpha.bmp");
+		ResourceTable::Load<Texture>(L"Bubble", L"img\\Bubble.png");
+		ResourceTable::Load<Texture>(L"MapleEffect", L"img\\ezgif.com-gif-maker.png");
 	}
 }
