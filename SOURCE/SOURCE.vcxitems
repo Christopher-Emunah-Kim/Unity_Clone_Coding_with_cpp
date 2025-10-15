@@ -15,6 +15,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_Animation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_AnimatorComp.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_CameraComp.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Entity.h" />
@@ -37,6 +39,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)K_TransformComp.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_Animation.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_AnimatorComp.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_CameraComp.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_GameObject.cpp" />

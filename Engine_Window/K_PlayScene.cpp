@@ -10,6 +10,7 @@
 #include "K_PlayerScript.h"
 #include "K_CameraComp.h"
 #include "K_MainCamera.h"
+#include "K_AnimatorComp.h"
 
 namespace KHS
 {
@@ -46,13 +47,23 @@ namespace KHS
 		TransformComp* tr = m_player->GetComponent<TransformComp>();
 		tr->SetPosition(Vector2D(WINDOW_WIDTH / 2.0f , WINDOW_HEIGHT / 2.0f));
 
-		SpriteRendererComp* sr = m_player->AddComponent<SpriteRendererComp>();
-		sr->SetSize(Vector2D(3.0f , 3.0f));
-
 		m_player->AddComponent<PlayerScript>();
 
-		Texture* playerTexture = ResourceTable::Find<Texture>(L"PackMan");
-		sr->SetTexture(playerTexture);
+		/*SpriteRendererComp* sr = m_player->AddComponent<SpriteRendererComp>();
+		sr->SetSize(Vector2D(3.0f , 3.0f));*/
+
+		//Texture* playerTexture = ResourceTable::Find<Texture>(L"Cat");
+		Texture* playerTexture = ResourceTable::Find<Texture>(L"Chicken");
+		//Texture* playerTexture = ResourceTable::Find<Texture>(L"PackMan");
+		//sr->SetTexture(playerTexture);
+
+		AnimatorComp* animator = m_player->AddComponent<AnimatorComp>();
+		//animator->CreateAnimation(L"CatFrontMove", playerTexture, 
+		//	Vector2D(0.0f , 0.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		animator->CreateAnimation(L"ChickenFrontMove", playerTexture, 
+			Vector2D(0.0f , 0.0f) , Vector2D(16.0f , 16.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		//animator->PlayAnmation(L"CatFrontMove" , true);
+		animator->PlayAnmation(L"ChickenFrontMove" , true);
 	}
 
 	void PlayScene::InitializeBackground()

@@ -6,6 +6,7 @@ namespace KHS
 	{
 		TRANSFORM,
 		SPRITERENDERER,
+		ANIMATOR,
 		SCRIPT,
 		CAMERA,
 		COLLIDER2D,
@@ -29,6 +30,7 @@ namespace KHS
 	{
 		TEXTURE,
 		AUDIO,
+		ANIMATION,
 		PREFAB,
 		END,
 	};
