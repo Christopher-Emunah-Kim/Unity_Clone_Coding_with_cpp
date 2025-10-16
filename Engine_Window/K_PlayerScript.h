@@ -32,6 +32,8 @@ namespace KHS
 		virtual void LateUpdate() override;
 		virtual void Render(HDC hdc) override;
 
+		void AttackEffect();
+
 	private:
 		EPlayerState m_state;
 		AnimatorComp* m_animator;

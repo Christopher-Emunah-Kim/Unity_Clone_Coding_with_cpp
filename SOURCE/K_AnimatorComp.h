@@ -25,9 +25,9 @@ namespace KHS
 
 		struct Events
 		{
-			Event start;
-			Event complete;
-			Event end;
+			Event startEvent;
+			Event completeEvent;
+			Event endEvent;
 		};
 
 		AnimatorComp();
@@ -41,8 +41,13 @@ namespace KHS
 		void CreateAnimation(const std::wstring& name , Texture* spriteSheet , 
 			Vector2D leftTop , Vector2D size , Vector2D offset , UINT spriteLength , float duration);
 
-		void PlayAnmation(const std::wstring& name , bool bLoop = true);
+		void PlayAnimation(const std::wstring& name , bool bLoop = true);
 		Animation* FindAnimation(const std::wstring& name);
+
+		Events* FindEvents(const std::wstring& name);
+		std::function<void()>& GetStartEvent(const std::wstring& name);
+		std::function<void()>& GetCompleteEvent(const std::wstring& name);
+		std::function<void()>& GetEndEvent(const std::wstring& name);
 
 		inline bool IsComplete() { return m_activeAnimation->IsComplete(); }
 

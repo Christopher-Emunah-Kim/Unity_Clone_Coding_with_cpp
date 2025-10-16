@@ -49,7 +49,7 @@ namespace KHS
 
 		TransformComp* tr = m_player->GetComponent<TransformComp>();
 
-		m_player->AddComponent<PlayerScript>();
+		PlayerScript* playerScript = m_player->AddComponent<PlayerScript>();
 
 		Texture* playerTexture = ResourceTable::Find<Texture>(L"Player");
 
@@ -58,8 +58,19 @@ namespace KHS
 			Vector2D(2000.0f , 250.0f) , Vector2D(250.0f , 250.0f) , Vector2D(0.0f , 0.0f) , 1 , 0.1f);
 		animator->CreateAnimation(L"FrontGiveWater" , playerTexture ,
 			Vector2D(0.0f , 2000.0f) , Vector2D(250.0f , 250.0f) , Vector2D(0.0f , 0.0f) , 12 , 0.1f);
+		animator->CreateAnimation(L"RightWalk", playerTexture,
+			Vector2D(0.0f , 0.0f) , Vector2D(250.0f , 250.0f) , Vector2D(0.0f , 0.0f) , 6 , 0.1f);
+		animator->CreateAnimation(L"LeftWalk", playerTexture,
+			Vector2D(1500.0f , 0.0f) , Vector2D(250.0f , 250.0f) , Vector2D(0.0f , 0.0f) , 6 , 0.1f);
+		animator->CreateAnimation(L"BackWalk", playerTexture,
+			Vector2D(0.0f , 250.0f) , Vector2D(250.0f , 250.0f) , Vector2D(0.0f , 0.0f) , 6 , 0.1f);
+		animator->CreateAnimation(L"FrontWalk", playerTexture,
+			Vector2D(0.0f , 500.0f) , Vector2D(250.0f , 250.0f) , Vector2D(0.0f , 0.0f) , 3 , 0.1f);
 
-		animator->PlayAnmation(L"Idle" , false);
+
+		animator->PlayAnimation(L"Idle" , false);
+		animator->GetCompleteEvent(L"FrontGiveWater")
+			= std::bind(&PlayerScript::AttackEffect , playerScript);
 
 		tr->SetPosition(Vector2D(100.0f , 100.0f));
 		tr->SetScale(Vector2D(1.0f , 1.0f));
@@ -94,7 +105,7 @@ namespace KHS
 		enemyAnimator->CreateAnimation(L"CatSleep" , enemyTexture ,
 			Vector2D(0.0f , 192.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
 
-		enemyAnimator->PlayAnmation(L"CatSitDown" , true);
+		enemyAnimator->PlayAnimation(L"CatSitDown" , true);
 	}
 
 	void PlayScene::InitializeBackground()

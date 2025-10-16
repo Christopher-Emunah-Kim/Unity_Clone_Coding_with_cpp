@@ -4,7 +4,7 @@ namespace KHS
 {
 	AnimatorComp::AnimatorComp()
 		:Component(EComponentType::ANIMATOR), 
-		m_animations{} , m_activeAnimation{ nullptr } , m_bLoop{ false }
+		m_animations{} , m_activeAnimation{ nullptr } , m_bLoop{ false } , m_events{}
 	{
 	}
 
@@ -17,6 +17,12 @@ namespace KHS
 		}
 		m_animations.clear();
 		m_activeAnimation = nullptr;
+
+		for ( auto& pair : m_events )
+		{
+			delete pair.second;
+			pair.second = nullptr;
+		}
 	}
 
 	void AnimatorComp::Initialize()
@@ -32,9 +38,19 @@ namespace KHS
 		{
 			m_activeAnimation->Update();
 
-			if ( m_activeAnimation->IsComplete() == true && m_bLoop == true )
+			Events* events = FindEvents(m_activeAnimation->GetName());
+
+			if ( m_activeAnimation->IsComplete() == true )
 			{
-				m_activeAnimation->Reset();
+				if (events)
+				{
+					events->completeEvent();
+				}
+
+				if (m_bLoop == true)
+				{
+					m_activeAnimation->Reset();
+				}
 			}
 		}
 	}
@@ -67,9 +83,13 @@ namespace KHS
 		}
 
 		anim = new Animation();
+		anim->SetName(name);
 		anim->CreateAnimation(name , spriteSheet , leftTop , size , offset , spriteLength , duration);
 		anim->SetAnimator(this);
 
+		Events* events = new Events();
+
+		m_events.insert(std::make_pair(name, events));
 		m_animations.insert(std::make_pair(name , anim));
 	}
 
@@ -85,22 +105,69 @@ namespace KHS
 		return iter->second;
 	}
 
-	void AnimatorComp::PlayAnmation(const std::wstring& name, bool bLoop)
+	void AnimatorComp::PlayAnimation(const std::wstring& name, bool bLoop)
 	{
 		Animation* anim = FindAnimation(name);
 
-		if ( anim == nullptr )
+		if (anim == nullptr)
 		{
 			return;
 		}
 
-		if ( m_activeAnimation == anim )
+		if (m_activeAnimation == anim)
 		{
 			return;
+		}
+
+		if (m_activeAnimation)
+		{
+			Events* curEvents = FindEvents(m_activeAnimation->GetName());
+
+			if (curEvents)
+			{
+				curEvents->endEvent();
+			}
+		}
+
+		Events* nextEvents = FindEvents(anim->GetName());
+
+		if(nextEvents)
+		{
+			nextEvents->startEvent();
 		}
 
 		m_activeAnimation = anim;
 		m_activeAnimation->Reset();
 		m_bLoop = bLoop;
+	}
+
+	AnimatorComp::Events* AnimatorComp::FindEvents(const std::wstring& name)
+	{
+		auto iter = m_events.find(name);
+
+		if(iter == m_events.end())
+		{
+			return nullptr;
+		}
+
+		return iter->second;
+	}
+
+	std::function<void()>& AnimatorComp::GetStartEvent(const std::wstring& name)
+	{
+		Events* events = FindEvents(name);
+		return events->startEvent.event;
+	}
+
+	std::function<void()>& AnimatorComp::GetCompleteEvent(const std::wstring& name)
+	{
+		Events* events = FindEvents(name);
+		return events->completeEvent.event;
+	}
+
+	std::function<void()>& AnimatorComp::GetEndEvent(const std::wstring& name)
+	{
+		Events* events = FindEvents(name);
+		return events->endEvent.event;
 	}
 }

@@ -78,13 +78,13 @@ namespace KHS
 			if ( isSleep == 1 )
 			{
 				m_state = EEnemyState::SLEEP;
-				m_animator->PlayAnmation(L"CatSleep" , false);
+				m_animator->PlayAnimation(L"CatSleep" , false);
 				m_time = 0.0f;
 			}
 			else
 			{
 				m_state = EEnemyState::SITDOWN;
-				m_animator->PlayAnmation(L"CatSitDown" , true);
+				m_animator->PlayAnimation(L"CatSitDown" , true);
 				m_time = 0.0f;
 			}
 		}
@@ -170,25 +170,25 @@ namespace KHS
 		case EEnemyDir::RIGHT:
 		{
 			m_state = EEnemyState::WALK;
-			m_animator->PlayAnmation(L"CatRightMove" , true);
+			m_animator->PlayAnimation(L"CatRightMove" , true);
 		}
 		break;
 		case EEnemyDir::LEFT:
 		{
 			m_state = EEnemyState::WALK;
-			m_animator->PlayAnmation(L"CatLeftMove" , true);
+			m_animator->PlayAnimation(L"CatLeftMove" , true);
 		}
 		break;
 		case EEnemyDir::UP:
 		{
 			m_state = EEnemyState::WALK;
-			m_animator->PlayAnmation(L"CatFrontMove" , true);
+			m_animator->PlayAnimation(L"CatFrontMove" , true);
 		}
 		break;
 		case EEnemyDir::DOWN:
 		{
 			m_state = EEnemyState::WALK;
-			m_animator->PlayAnmation(L"CatBackMove" , true);
+			m_animator->PlayAnimation(L"CatBackMove" , true);
 		}
 		break;
 
