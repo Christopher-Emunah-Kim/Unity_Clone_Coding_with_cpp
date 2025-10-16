@@ -9,7 +9,7 @@
 namespace KHS
 {
 	PlayerScript::PlayerScript()
-		:ScriptComp() , m_state(EPlayerState::SITDOWN) , m_animator(nullptr)
+		:ScriptComp() , m_state(EPlayerState::IDLE) , m_animator(nullptr)
 	{
 	}
 
@@ -33,9 +33,9 @@ namespace KHS
 
 		switch ( m_state )
 		{
-		case EPlayerState::SITDOWN:
+		case EPlayerState::IDLE:
 		{
-			PlayerSitDown();
+			PlayerIdle();
 		}
 		break;
 		case EPlayerState::WALK:
@@ -49,7 +49,7 @@ namespace KHS
 		break;
 		case EPlayerState::GIVEWATER:
 		{
-
+			PlayerGiveWater();
 		}
 		break;
 		case EPlayerState::ATTACK:
@@ -123,35 +123,27 @@ namespace KHS
 		if ( Input::GetKeyUp(EKeyCode::D) || Input::GetKeyUp(EKeyCode::A) ||
 			Input::GetKeyUp(EKeyCode::W) || Input::GetKeyUp(EKeyCode::S) )
 		{
-			m_state = EPlayerState::SITDOWN;
+			m_state = EPlayerState::IDLE;
 			m_animator->PlayAnmation(L"Idle" , false);
 		}
 	}
 
-	void PlayerScript::PlayerSitDown()
+	void PlayerScript::PlayerIdle()
 	{
-		if ( Input::GetKey(EKeyCode::D) )
+		if ( Input::GetKey(EKeyCode::LButton) )
 		{
-			m_state = EPlayerState::WALK;
-			m_animator->PlayAnmation(L"Idle" , true);
+			m_state = EPlayerState::GIVEWATER;
+			m_animator->PlayAnmation(L"FrontGiveWater" , false);
+			Vector2D mousePos = Input::GetMousePosition();
 		}
+	}
 
-		if ( Input::GetKey(EKeyCode::A) )
+	void PlayerScript::PlayerGiveWater()
+	{
+		if ( m_animator->IsComplete() == true )
 		{
-			m_state = EPlayerState::WALK;
-			m_animator->PlayAnmation(L"Idle" , true);
-		}
-
-		if ( Input::GetKey(EKeyCode::W) )
-		{
-			m_state = EPlayerState::WALK;
-			m_animator->PlayAnmation(L"Idle" , true);
-		}
-
-		if ( Input::GetKey(EKeyCode::S) )
-		{
-			m_state = EPlayerState::WALK;
-			m_animator->PlayAnmation(L"Idle" , true);
+			m_state = EPlayerState::IDLE;
+			m_animator->PlayAnmation(L"Idle" , false);
 		}
 	}
 }

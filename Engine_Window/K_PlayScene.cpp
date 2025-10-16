@@ -55,7 +55,9 @@ namespace KHS
 
 		AnimatorComp* animator = m_player->AddComponent<AnimatorComp>();
 		animator->CreateAnimation(L"Idle" , playerTexture ,
-			Vector2D(2000.0f , 250.0f) , Vector2D(250.0f , 250.0f) , Vector2D(0.0f , 0.0f) , 1 , 0.5f);
+			Vector2D(2000.0f , 250.0f) , Vector2D(250.0f , 250.0f) , Vector2D(0.0f , 0.0f) , 1 , 0.1f);
+		animator->CreateAnimation(L"FrontGiveWater" , playerTexture ,
+			Vector2D(0.0f , 2000.0f) , Vector2D(250.0f , 250.0f) , Vector2D(0.0f , 0.0f) , 12 , 0.1f);
 
 		animator->PlayAnmation(L"Idle" , false);
 

@@ -10,7 +10,6 @@ namespace KHS
 		enum class EPlayerState
 		{
 			IDLE,
-			SITDOWN,
 			WALK,
 			SLEEP,
 			GIVEWATER,
@@ -23,8 +22,9 @@ namespace KHS
 		virtual ~PlayerScript();
 
 	private:
+		void PlayerIdle();
 		void PlayerMove();
-		void PlayerSitDown();
+		void PlayerGiveWater();
 
 	public:
 		virtual void Initialize() override;

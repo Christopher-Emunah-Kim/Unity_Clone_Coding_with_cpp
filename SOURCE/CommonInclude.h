@@ -14,6 +14,7 @@
 #include <map>
 #include <list>
 #include <string>
+#include <functional>
 
 #include <assert.h>
 

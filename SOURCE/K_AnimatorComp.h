@@ -7,6 +7,29 @@ namespace KHS
 	class AnimatorComp : public Component
 	{
 	public:
+		struct Event
+		{
+			void operator=(std::function<void()> func)
+			{
+				event = func;
+			}
+
+			void operator()()
+			{
+				if (event)
+					event();
+			}
+
+			std::function<void()> event;
+		};
+
+		struct Events
+		{
+			Event start;
+			Event complete;
+			Event end;
+		};
+
 		AnimatorComp();
 		virtual ~AnimatorComp();
 
@@ -21,10 +44,15 @@ namespace KHS
 		void PlayAnmation(const std::wstring& name , bool bLoop = true);
 		Animation* FindAnimation(const std::wstring& name);
 
+		inline bool IsComplete() { return m_activeAnimation->IsComplete(); }
+
 	private:
 		std::map<std::wstring , Animation*> m_animations;
 		Animation* m_activeAnimation;
 		bool m_bLoop;
+
+		//Event
+		std::map<std::wstring , Events*> m_events;
 	};
 }
 
