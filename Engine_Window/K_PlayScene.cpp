@@ -37,10 +37,12 @@ namespace KHS
 
 	void PlayScene::InitializeMainCamera()
 	{
-		GameObject* camera = ObjectInstantiate::Instantiate<GameObject>(ELayerType::PARTICLE, Vector2D(800.0f, 450.0f));
+		GameObject* camera = ObjectInstantiate::Instantiate<GameObject>(ELayerType::PARTICLE, 
+			Vector2D(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT/2.0f));
+
 		CameraComp* cameraComp = camera->AddComponent<CameraComp>();
 		mainCamera = cameraComp;
-		cameraComp->SetResolution(Vector2D(1600.0f, 900.0f));
+		cameraComp->SetResolution(Vector2D(static_cast<float>(WINDOW_WIDTH),static_cast<float>( WINDOW_HEIGHT )));
 	}
 
 	void PlayScene::InitializePlayer()
