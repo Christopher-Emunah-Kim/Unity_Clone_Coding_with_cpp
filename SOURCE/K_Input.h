@@ -29,6 +29,9 @@ namespace KHS
 		Alt,
 		Tab,
 		CapsLock,
+		LButton, 
+		MButton,
+		RButton,
 		Max
 	};;
 
@@ -51,6 +54,8 @@ namespace KHS
 		static bool IsKeyDown(EKeyCode code);
 		static void UpdateKeyDown(Input::Key& key);
 		static void UpdateKeyUp(Input::Key& key);
+		static void GetMousePositionByWindow();
+		static void ClearKeys();
 
 	public:
 		static void Initialize();
@@ -59,10 +64,13 @@ namespace KHS
 		static bool GetKeyDown(EKeyCode code) { return m_keys[static_cast<size_t>(code)].state == EKeyState::Down; }
 		static bool GetKeyUp(EKeyCode code) { return m_keys[static_cast<size_t>(code)].state == EKeyState::Up; }
 		static bool GetKey(EKeyCode code) { return m_keys[static_cast<size_t>(code)].state == EKeyState::Pressed; }
+		static Vector2D GetMousePosition() { return m_mousePosition; }
 
 	private:
 		static std::vector<Key> m_keys;
+		static Vector2D m_mousePosition;
 	};
+
 
 }
 

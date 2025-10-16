@@ -1,8 +1,12 @@
-#include "K_Input.h"
+ï»¿#include "K_Input.h"
+#include "K_Application.h"
+
+extern KHS::Application app;
 
 namespace KHS
 {
 	std::vector<Input::Key> Input::m_keys = { };
+	Vector2D Input::m_mousePosition = Vector2D::Zero;
 
 	int ASCII[static_cast<int>(EKeyCode::Max)] =
 	{
@@ -21,7 +25,10 @@ namespace KHS
 		VK_CONTROL,
 		VK_MENU,
 		VK_TAB,
-		VK_CAPITAL
+		VK_CAPITAL,
+		VK_LBUTTON,
+		VK_MBUTTON,
+		VK_RBUTTON
 	};
 
 	void Input::Initialize()
@@ -62,13 +69,22 @@ namespace KHS
 
 	void Input::UpdateKey(Input::Key& key)
 	{
-		if (IsKeyDown(key.keyCode)) 
+		if ( GetFocus() )
 		{
-			UpdateKeyDown(key);
+			if ( IsKeyDown(key.keyCode) )
+			{
+				UpdateKeyDown(key);
+			}
+			else
+			{
+				UpdateKeyUp(key);
+			}
+
+			GetMousePositionByWindow();
 		}
 		else
 		{
-			UpdateKeyUp(key);
+			ClearKeys();
 		}
 	}
 
@@ -79,7 +95,7 @@ namespace KHS
 
 	void Input::UpdateKeyDown(Input::Key& key)
 	{
-		if (key.isPressed == true) //ÀÌÀü ÇÁ·¹ÀÓ¿¡µµ ´­·ÁÀÖ¾úÀ½
+		if (key.isPressed == true) //ì´ì „ í”„ë ˆì„ì—ë„ ëˆŒë ¤ìˆì—ˆìŒ
 		{	
 			key.state = EKeyState::Pressed;
 		}
@@ -93,7 +109,7 @@ namespace KHS
 
 	void Input::UpdateKeyUp(Input::Key& key)
 	{
-		if (key.isPressed == true) //ÀÌÀü ÇÁ·¹ÀÓ¿¡´Â ´­·ÁÀÖ¾úÀ½
+		if (key.isPressed == true) //ì´ì „ í”„ë ˆì„ì—ëŠ” ëˆŒë ¤ìˆì—ˆìŒ
 		{
 			key.state = EKeyState::Up;
 		}
@@ -103,5 +119,32 @@ namespace KHS
 		}
 
 		key.isPressed = false;
+	}
+
+	void Input::GetMousePositionByWindow()
+	{
+		POINT mousePos = {};
+		GetCursorPos(&mousePos);
+		ScreenToClient(app.GetHwnd() , &mousePos);
+
+		m_mousePosition.x = static_cast< float >( mousePos.x );
+		m_mousePosition.y = static_cast< float >( mousePos.y );
+	}
+
+	void Input::ClearKeys()
+	{
+		for(Key& key : m_keys)
+		{
+			if(key.state == EKeyState::Pressed || key.state == EKeyState::Down)
+			{
+				key.state = EKeyState::Up;
+			}
+			else if ( key.state == EKeyState::Up )
+			{
+				key.state = EKeyState::None;
+			}
+
+			key.isPressed = false;
+		}
 	}
 }
