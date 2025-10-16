@@ -18,6 +18,8 @@ namespace KHS
 		Vector2D CalculatePosition(Vector2D pos);
 		void SetResolution(const Vector2D& resolution);
 
+		inline void SetTarget(GameObject* target) { m_target = target; }
+
 	private:
 		GameObject* m_target;
 		Vector2D m_distance;

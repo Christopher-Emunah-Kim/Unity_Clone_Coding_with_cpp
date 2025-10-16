@@ -24,6 +24,7 @@ namespace KHS
 	public:
 		void Initialize(HWND hwnd, UINT width, UINT height);
 		void Run();
+		void Release();
 
 		inline HDC GetHdc() { return m_hdc; }
 		inline HWND GetHwnd() { return m_hwnd; }

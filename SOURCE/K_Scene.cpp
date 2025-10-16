@@ -1,4 +1,4 @@
-#include "K_Scene.h"
+﻿#include "K_Scene.h"
 #include "K_Layer.h"
 
 namespace KHS
@@ -10,6 +10,15 @@ namespace KHS
 	}
 	Scene::~Scene()
 	{
+		for (Layer* layer : m_layers)
+		{
+			if (layer == nullptr)
+				continue;
+
+			delete layer;
+			layer = nullptr;
+		}
+		m_layers.clear();
 	}
 
 	void Scene::CreateLayers()

@@ -1,7 +1,8 @@
-#include "K_Application.h"
+ï»¿#include "K_Application.h"
 #include "K_Input.h"
 #include "K_Time.h"
 #include "K_SceneManager.h"
+#include "K_ResourceTable.h"
 #include "../Editor_Window/framework.h"
 
 namespace KHS
@@ -73,16 +74,22 @@ namespace KHS
 		CopyBuffer(rect);
 	}
 
+	void Application::Release()
+	{
+		SceneManager::Release();
+		ResourceTable::Release();
+	}
+
 	void Application::MyAdjustWindowRect(HWND hwnd, UINT width, UINT height)
 	{
 		m_hwnd = hwnd;
 		m_hdc = GetDC(m_hwnd);
 
-		//AdjustWindowRectÇÔ¼ö : À©µµ¿ì ½ºÅ¸ÀÏ¿¡ ¸Â°Ô Å¬¶óÀÌ¾ðÆ® ¿µ¿ª Å©±â¸¦ Á¶Á¤
-		//myRect : Á¶Á¤ÇÒ RECT ±¸Á¶Ã¼ Æ÷ÀÎÅÍ
-		RECT myRect = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT }; //Å¬¶óÀÌ¾ðÆ® ¿µ¿ª Å©±â ¼³Á¤
+		//AdjustWindowRectí•¨ìˆ˜ : ìœˆë„ìš° ìŠ¤íƒ€ì¼ì— ë§žê²Œ í´ë¼ì´ì–¸íŠ¸ ì˜ì—­ í¬ê¸°ë¥¼ ì¡°ì •
+		//myRect : ì¡°ì •í•  RECT êµ¬ì¡°ì²´ í¬ì¸í„°
+		RECT myRect = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT }; //í´ë¼ì´ì–¸íŠ¸ ì˜ì—­ í¬ê¸° ì„¤ì •
 		AdjustWindowRectEx(&myRect, WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX & ~WS_THICKFRAME, FALSE, 0); 
-		//Å¬¶óÀÌ¾ðÆ® ¿µ¿ª Å©±â Á¶Á¤ -> À©µµ¿ì ½ºÅ¸ÀÏ (ÃÖ´ëÈ­ ¹öÆ° Á¦°Å ¿¬»ê, Å×µÎ¸® Å©±â º¯°æ Á¦°Å ºñÆ® ¿¬»ê) 
+		//í´ë¼ì´ì–¸íŠ¸ ì˜ì—­ í¬ê¸° ì¡°ì • -> ìœˆë„ìš° ìŠ¤íƒ€ì¼ (ìµœëŒ€í™” ë²„íŠ¼ ì œê±° ì—°ì‚°, í…Œë‘ë¦¬ í¬ê¸° ë³€ê²½ ì œê±° ë¹„íŠ¸ ì—°ì‚°) 
 	}
 
 	void Application::CreateBuffer(UINT width, UINT height)

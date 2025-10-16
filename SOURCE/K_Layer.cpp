@@ -1,4 +1,4 @@
-#include "K_Layer.h"
+﻿#include "K_Layer.h"
 
 namespace KHS
 {
@@ -9,6 +9,15 @@ namespace KHS
 
 	Layer::~Layer()
 	{
+		for (GameObject* obj : m_gameObjects)
+		{
+			if (obj == nullptr)
+				continue;
+
+			delete obj;
+			obj = nullptr;
+		}
+		m_gameObjects.clear();
 	}
 
 	void Layer::Initialize()

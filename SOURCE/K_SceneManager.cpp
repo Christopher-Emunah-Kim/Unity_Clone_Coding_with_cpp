@@ -1,4 +1,4 @@
-#include "K_SceneManager.h"
+﻿#include "K_SceneManager.h"
 
 namespace KHS
 {
@@ -19,6 +19,17 @@ namespace KHS
 	void SceneManager::Render(HDC hdc)
 	{
 		m_activeScene->Render(hdc);
+	}
+
+	void SceneManager::Release()
+	{
+		for (auto& pair : m_scenes)
+		{
+			delete pair.second;
+			pair.second = nullptr;
+		}
+		m_scenes.clear();
+		m_activeScene = nullptr;
 	}
 
 	Scene* SceneManager::LoadScene(const std::wstring& name)

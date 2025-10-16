@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "K_Scene.h"
 
 namespace KHS
@@ -27,6 +27,7 @@ namespace KHS
 		static void Update();
 		static void LateUpdate();
 		static void Render(HDC hdc);
+		static void Release();
 
 	private:
 		static std::map<const std::wstring, Scene*> m_scenes;
