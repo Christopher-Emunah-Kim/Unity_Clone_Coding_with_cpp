@@ -11,6 +11,8 @@
 #include "K_CameraComp.h"
 #include "K_MainCamera.h"
 #include "K_AnimatorComp.h"
+#include "K_Enemy.h"
+#include "K_EnemyScript.h"
 
 namespace KHS
 {
@@ -26,6 +28,7 @@ namespace KHS
 
 		//Resource Initialize before Object Instantiate
 		InitializePlayer();
+		InitializeEnemy();
 		InitializeBackground();
 
 		//Intialize Layer and GameObject
@@ -73,10 +76,42 @@ namespace KHS
 			Vector2D(0.0f , 192.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
 
 
-		animator->PlayAnmation(L"CatSitDown" , true);
+		animator->PlayAnmation(L"CatSitDown" , false);
 
 		tr->SetPosition(Vector2D(100.0f , 100.0f));
 		tr->SetScale(Vector2D(2.0f , 2.0f));
+	}
+
+	void PlayScene::InitializeEnemy()
+	{
+		Enemy* enemy = ObjectInstantiate::Instantiate<Enemy>(ELayerType::ENEMY);
+		enemy->AddComponent<EnemyScript>();
+
+		TransformComp* enemyTr = enemy->GetComponent<TransformComp>();
+		enemyTr->SetPosition(Vector2D(200.0f, 200.0f));
+		enemyTr->SetScale(Vector2D(2.0f , 2.0f));
+
+
+		Texture* enemyTexture = ResourceTable::Find<Texture>(L"Cat");
+
+		AnimatorComp* enemyAnimator = enemy->AddComponent<AnimatorComp>();
+
+		enemyAnimator->CreateAnimation(L"CatBackMove" , enemyTexture ,
+			Vector2D(0.0f , 0.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		enemyAnimator->CreateAnimation(L"CatRightMove" , enemyTexture ,
+			Vector2D(0.0f , 32.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		enemyAnimator->CreateAnimation(L"CatFrontMove" , enemyTexture ,
+			Vector2D(0.0f , 64.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		enemyAnimator->CreateAnimation(L"CatLeftMove" , enemyTexture ,
+			Vector2D(0.0f , 96.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		enemyAnimator->CreateAnimation(L"CatSitDown" , enemyTexture ,
+			Vector2D(0.0f , 128.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		enemyAnimator->CreateAnimation(L"CatGrooming" , enemyTexture ,
+			Vector2D(0.0f , 160.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		enemyAnimator->CreateAnimation(L"CatSleep" , enemyTexture ,
+			Vector2D(0.0f , 192.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+
+		enemyAnimator->PlayAnmation(L"CatSitDown" , true);
 	}
 
 	void PlayScene::InitializeBackground()

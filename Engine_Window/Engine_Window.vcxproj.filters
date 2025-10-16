@@ -33,6 +33,12 @@
     <ClInclude Include="K_PlayerScript.h">
       <Filter>Script</Filter>
     </ClInclude>
+    <ClInclude Include="..\SOURCE\K_Enemy.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="K_EnemyScript.h">
+      <Filter>Script</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="K_PlayScene.cpp">
@@ -45,6 +51,12 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="K_PlayerScript.cpp">
+      <Filter>Script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SOURCE\K_Enemy.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="K_EnemyScript.cpp">
       <Filter>Script</Filter>
     </ClCompile>
   </ItemGroup>

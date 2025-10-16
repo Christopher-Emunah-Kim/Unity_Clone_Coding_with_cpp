@@ -14,6 +14,7 @@ namespace KHS
 	private:
 		void InitializeMainCamera();
 		void InitializePlayer();
+		void InitializeEnemy();
 		void InitializeBackground();
 
 	public:

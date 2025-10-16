@@ -21,7 +21,7 @@ namespace KHS
 		BACKGROUND,
 		//TREE,
 		//CHARACTER,
-		//MONSTER,
+		ENEMY,
 		PLAYER,
 		PARTICLE,
 		MAX = 16,

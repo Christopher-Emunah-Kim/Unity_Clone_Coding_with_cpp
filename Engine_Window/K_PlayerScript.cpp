@@ -70,30 +70,47 @@ namespace KHS
 	{
 		TransformComp* tr = GetOwner()->GetComponent<TransformComp>();
 		Vector2D pos = tr->GetPosition();
+		Vector2D scale = tr->GetScale();
+
+		float deltaTime = Time::GetDeltaTime();
+		float speed = 100.0f * deltaTime;
 
 		if ( Input::GetKey(EKeyCode::D) )
 		{
-			pos.x += 100.0f * Time::GetDeltaTime();
-			tr->SetPosition(pos);
+			pos.x += speed;
 		}
 
 		if ( Input::GetKey(EKeyCode::A) )
 		{
-			pos.x -= 100.0f * Time::GetDeltaTime();
-			tr->SetPosition(pos);
+			pos.x -= speed;
 		}
 
 		if ( Input::GetKey(EKeyCode::W) )
 		{
-			pos.y -= 100.0f * Time::GetDeltaTime();
-			tr->SetPosition(pos);
+			pos.y -= speed;
 		}
 
 		if ( Input::GetKey(EKeyCode::S) )
 		{
-			pos.y += 100.0f * Time::GetDeltaTime();
-			tr->SetPosition(pos);
+			pos.y += speed;
 		}
+
+		float spriteSize = 32.0f;
+		float halfWidth = ( spriteSize * scale.x ) * 0.5f;
+		float halfHeight = ( spriteSize * scale.y ) * 0.5f;
+
+		// 화면 경계 체크
+		if ( pos.x - halfWidth < 0.0f )
+			pos.x = halfWidth;
+		if ( pos.x + halfWidth > WINDOW_WIDTH )
+			pos.x = WINDOW_WIDTH - halfWidth;
+		if ( pos.y - halfHeight < 0.0f )
+			pos.y = halfHeight;
+		if ( pos.y + halfHeight > WINDOW_HEIGHT )
+			pos.y = WINDOW_HEIGHT - halfHeight;
+
+
+		tr->SetPosition(pos);
 
 		if ( Input::GetKeyUp(EKeyCode::D) || Input::GetKeyUp(EKeyCode::A) ||
 			Input::GetKeyUp(EKeyCode::W) || Input::GetKeyUp(EKeyCode::S) )

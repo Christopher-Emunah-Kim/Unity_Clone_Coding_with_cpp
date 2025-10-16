@@ -136,14 +136,17 @@ namespace KHS
 			graphics.TranslateTransform(-pos.x , -pos.y);
 
 			Vector2D scale = tr->GetScale();
+			float scaleWidth = sprite.size.x * scale.x;
+			float scaleHeight = sprite.size.y * scale.y;
+
 			graphics.DrawImage(
 				m_spriteTexture->GetImage() ,
 				Gdiplus::Rect
 				(
-					pos.x - ( sprite.size.x / 2.0f )
-					, pos.y - ( sprite.size.y / 2.0f )
-					, sprite.size.x * scale.x
-					, sprite.size.y * scale.y
+					pos.x - ( scaleWidth / 2.0f )
+					, pos.y - ( scaleHeight / 2.0f )
+					, scaleWidth
+					, scaleHeight
 				) ,
 				sprite.leftTop.x , sprite.leftTop.y ,
 				sprite.size.x , sprite.size.y ,

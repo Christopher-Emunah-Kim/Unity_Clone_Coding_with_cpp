@@ -132,6 +132,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\SOURCE\K_Enemy.h" />
+    <ClInclude Include="K_EnemyScript.h" />
     <ClInclude Include="K_LoadResources.h" />
     <ClInclude Include="K_Player.h" />
     <ClInclude Include="K_PlayerScript.h" />
@@ -140,6 +142,8 @@
     <ClInclude Include="K_TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\SOURCE\K_Enemy.cpp" />
+    <ClCompile Include="K_EnemyScript.cpp" />
     <ClCompile Include="K_Player.cpp" />
     <ClCompile Include="K_PlayerScript.cpp" />
     <ClCompile Include="K_PlayScene.cpp" />

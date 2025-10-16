@@ -136,11 +136,17 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    SetConsoleTitle(L"Unity Console Shooting 2D");
 
    //실제 윈도우 생성
-   //CreateWindowW함수
    //윈도우 클래스 이름, 윈도우 타이틀, 윈도우 스타일, x좌표, y좌표, 너비, 높이, 부모 윈도우 핸들, 메뉴 핸들, 인스턴스 핸들, 추가 매개변수
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX & ~WS_THICKFRAME,
+   RECT windowRect = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT };
+   DWORD dwStyle = WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX & ~WS_THICKFRAME;
+   AdjustWindowRect ( &windowRect , dwStyle , FALSE );
+
+   int adjustedWidth = windowRect.right - windowRect.left;
+   int adjustedHeight = windowRect.bottom - windowRect.top;
+   
+   HWND hWnd = CreateWindowW(szWindowClass, szTitle, dwStyle,
        APP_POSITION_X, APP_POSITION_Y, //시작좌표(스크린 좌표계)
-       WINDOW_WIDTH, WINDOW_HEIGHT, //윈도우 스타일에 맞춰 조정된 너비와 높이
+	   adjustedWidth , adjustedHeight , //윈도우 스타일에 맞춰 조정된 너비와 높이
        nullptr, nullptr, hInstance, nullptr);
 
    app.Initialize(hWnd, WINDOW_WIDTH, WINDOW_HEIGHT); //애플리케이션 초기화
@@ -157,6 +163,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    //GDI+ 초기화
    Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
 
+   //Rand
+   srand ( ( unsigned int ) time ( nullptr ) );
 
    //임시 로드 씬
    KHS::LoadResources();
