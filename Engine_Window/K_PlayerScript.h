@@ -13,6 +13,7 @@ namespace KHS
 			SITDOWN,
 			WALK,
 			SLEEP,
+			GIVEWATER,
 			ATTACK,
 			DIE,
 			END

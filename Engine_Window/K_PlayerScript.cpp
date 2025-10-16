@@ -47,12 +47,20 @@ namespace KHS
 		{
 		}
 		break;
+		case EPlayerState::GIVEWATER:
+		{
+
+		}
+		break;
 		case EPlayerState::ATTACK:
 		{
 		}
 		break;
-		}
 
+		default:
+			assert(false);
+			break;
+		}
 	}
 
 	void PlayerScript::LateUpdate()
@@ -116,7 +124,7 @@ namespace KHS
 			Input::GetKeyUp(EKeyCode::W) || Input::GetKeyUp(EKeyCode::S) )
 		{
 			m_state = EPlayerState::SITDOWN;
-			m_animator->PlayAnmation(L"CatSitDown" , false);
+			m_animator->PlayAnmation(L"Idle" , false);
 		}
 	}
 
@@ -125,25 +133,25 @@ namespace KHS
 		if ( Input::GetKey(EKeyCode::D) )
 		{
 			m_state = EPlayerState::WALK;
-			m_animator->PlayAnmation(L"CatRightMove" , true);
+			m_animator->PlayAnmation(L"Idle" , true);
 		}
 
 		if ( Input::GetKey(EKeyCode::A) )
 		{
 			m_state = EPlayerState::WALK;
-			m_animator->PlayAnmation(L"CatLeftMove" , true);
+			m_animator->PlayAnmation(L"Idle" , true);
 		}
 
 		if ( Input::GetKey(EKeyCode::W) )
 		{
 			m_state = EPlayerState::WALK;
-			m_animator->PlayAnmation(L"CatFrontMove" , true);
+			m_animator->PlayAnmation(L"Idle" , true);
 		}
 
 		if ( Input::GetKey(EKeyCode::S) )
 		{
 			m_state = EPlayerState::WALK;
-			m_animator->PlayAnmation(L"CatBackMove" , true);
+			m_animator->PlayAnmation(L"Idle" , true);
 		}
 	}
 }

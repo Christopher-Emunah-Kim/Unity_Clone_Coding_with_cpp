@@ -48,38 +48,19 @@ namespace KHS
 		m_player = ObjectInstantiate::Instantiate<Player>(ELayerType::PLAYER);
 
 		TransformComp* tr = m_player->GetComponent<TransformComp>();
-		tr->SetPosition(Vector2D(WINDOW_WIDTH / 2.0f , WINDOW_HEIGHT / 2.0f));
 
 		m_player->AddComponent<PlayerScript>();
 
-		/*SpriteRendererComp* sr = m_player->AddComponent<SpriteRendererComp>();
-		sr->SetSize(Vector2D(3.0f , 3.0f));*/
-		//Texture* playerTexture = ResourceTable::Find<Texture>(L"PackMan");
-		//sr->SetTexture(playerTexture);
-
-		Texture* playerTexture = ResourceTable::Find<Texture>(L"Cat");
+		Texture* playerTexture = ResourceTable::Find<Texture>(L"Player");
 
 		AnimatorComp* animator = m_player->AddComponent<AnimatorComp>();
-		animator->CreateAnimation(L"CatBackMove", playerTexture, 
-			Vector2D(0.0f , 0.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
-		animator->CreateAnimation(L"CatRightMove", playerTexture,
-			Vector2D(0.0f , 32.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
-		animator->CreateAnimation(L"CatFrontMove", playerTexture,
-			Vector2D(0.0f , 64.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
-		animator->CreateAnimation(L"CatLeftMove" , playerTexture ,
-			Vector2D(0.0f , 96.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
-		animator->CreateAnimation(L"CatSitDown" , playerTexture ,
-			Vector2D(0.0f , 128.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
-		animator->CreateAnimation(L"CatGrooming" , playerTexture ,
-			Vector2D(0.0f , 160.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
-		animator->CreateAnimation(L"CatSleep" , playerTexture ,
-			Vector2D(0.0f , 192.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+		animator->CreateAnimation(L"Idle" , playerTexture ,
+			Vector2D(2000.0f , 250.0f) , Vector2D(250.0f , 250.0f) , Vector2D(0.0f , 0.0f) , 1 , 0.5f);
 
-
-		animator->PlayAnmation(L"CatSitDown" , false);
+		animator->PlayAnmation(L"Idle" , false);
 
 		tr->SetPosition(Vector2D(100.0f , 100.0f));
-		tr->SetScale(Vector2D(2.0f , 2.0f));
+		tr->SetScale(Vector2D(1.0f , 1.0f));
 	}
 
 	void PlayScene::InitializeEnemy()
@@ -89,7 +70,7 @@ namespace KHS
 
 		TransformComp* enemyTr = enemy->GetComponent<TransformComp>();
 		enemyTr->SetPosition(Vector2D(200.0f, 200.0f));
-		enemyTr->SetScale(Vector2D(2.0f , 2.0f));
+		enemyTr->SetScale(Vector2D(3.0f , 3.0f));
 
 
 		Texture* enemyTexture = ResourceTable::Find<Texture>(L"Cat");

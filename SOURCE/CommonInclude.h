@@ -36,5 +36,5 @@ using namespace std;
 //컴파일 상수
 constexpr int WINDOW_WIDTH = 1280; //윈도우 창 크기 너비
 constexpr int WINDOW_HEIGHT = 720; //윈도우 창 크기 높이
-constexpr int APP_POSITION_X = 200;//윈도우 창 시작 좌표 X
-constexpr int APP_POSITION_Y = 100;//윈도우 창 시작 좌표 Y
+constexpr int APP_POSITION_X = 250;//윈도우 창 시작 좌표 X
+constexpr int APP_POSITION_Y = 180;//윈도우 창 시작 좌표 Y

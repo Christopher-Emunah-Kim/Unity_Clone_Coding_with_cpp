@@ -100,16 +100,20 @@ namespace KHS
 			func.BlendOp = AC_SRC_OVER;
 			func.BlendFlags = 0;
 			func.AlphaFormat = AC_SRC_ALPHA;
-			func.SourceConstantAlpha = 125; //0(transparent) ~ 255(opaque)
+			func.SourceConstantAlpha = 255; //0(transparent) ~ 255(opaque)
 			//TODO : 피격 시 투명도 조절
 
 			HDC spriteHdc = m_spriteTexture->GetHdc();
 
+			Vector2D scale = tr->GetScale();
+			float scaleWidth = sprite.size.x * scale.x;
+			float scaleHeight = sprite.size.y * scale.y;
+
 			AlphaBlend(hdc ,
-				static_cast< int >( pos.x ) ,
-				static_cast< int >( pos.y ) ,
-				static_cast< int >( sprite.size.x * 5 ) ,
-				static_cast< int >( sprite.size.y * 5 ) ,
+				static_cast< int >( pos.x - ( scaleWidth / 2.0f ) ) ,  // 중앙 정렬
+				static_cast< int >( pos.y - ( scaleHeight / 2.0f ) ) , // 중앙 정렬
+				static_cast< int >( scaleWidth ) ,   // 스케일 적용
+				static_cast< int >( scaleHeight ) ,  // 스케일 적용
 				spriteHdc ,
 				static_cast< int >( sprite.leftTop.x ) ,
 				static_cast< int >( sprite.leftTop.y ) ,
