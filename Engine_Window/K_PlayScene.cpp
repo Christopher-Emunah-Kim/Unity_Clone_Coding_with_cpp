@@ -47,6 +47,8 @@ namespace KHS
 	{
 		m_player = ObjectInstantiate::Instantiate<Player>(ELayerType::PLAYER);
 
+		mainCamera->SetTarget(m_player);
+
 		TransformComp* tr = m_player->GetComponent<TransformComp>();
 
 		PlayerScript* playerScript = m_player->AddComponent<PlayerScript>();
