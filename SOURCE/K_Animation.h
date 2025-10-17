@@ -44,6 +44,7 @@ namespace KHS
 
 		inline bool IsComplete() { return m_bComplete; }
 		inline void SetAnimator(AnimatorComp* animator) { m_animator = animator; }
+		inline Texture* GetSpriteTexture() { return m_spriteTexture; }
 
 	private:
 		AnimatorComp* m_animator;

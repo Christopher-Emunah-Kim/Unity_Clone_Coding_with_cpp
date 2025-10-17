@@ -41,8 +41,11 @@ namespace KHS
 		void CreateAnimation(const std::wstring& name , Texture* spriteSheet , 
 			Vector2D leftTop , Vector2D size , Vector2D offset , UINT spriteLength , float duration);
 
-		void PlayAnimation(const std::wstring& name , bool bLoop = true);
+		void CreateAnimationByFolder(const std::wstring& name , const std::wstring& folderPath ,
+			Vector2D offset , float duration);
+
 		Animation* FindAnimation(const std::wstring& name);
+		void PlayAnimation(const std::wstring& name , bool bLoop = true);
 
 		Events* FindEvents(const std::wstring& name);
 		std::function<void()>& GetStartEvent(const std::wstring& name);

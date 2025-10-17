@@ -28,7 +28,8 @@ namespace KHS
 
 		//Resource Initialize before Object Instantiate
 		InitializePlayer();
-		InitializeEnemy();
+		//InitializeEnemy();
+		InitializeMushroom();
 		InitializeBackground();
 
 		//Intialize Layer and GameObject
@@ -110,6 +111,35 @@ namespace KHS
 			Vector2D(0.0f , 192.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
 
 		enemyAnimator->PlayAnimation(L"CatSitDown" , true);
+	}
+
+	void PlayScene::InitializeMushroom()
+	{
+		Enemy* sheet = ObjectManager::Instantiate<Enemy>(ELayerType::PARTICLE);
+		sheet->AddComponent<EnemyScript>();
+
+		TransformComp* sheetTr = sheet->GetComponent<TransformComp>();
+		sheetTr->SetPosition(Vector2D(300.0f , 300.0f));
+		sheetTr->SetScale(Vector2D(3.0f , 3.0f));
+
+		AnimatorComp* mrAnimator = sheet->AddComponent<AnimatorComp>();
+		mrAnimator->CreateAnimationByFolder(L"MushroomIdle" ,
+			L"..\\Resources\\img\\MushroomIdle" , Vector2D::Zero , 0.1f);
+
+		mrAnimator->PlayAnimation(L"MushroomIdle" , true);
+
+		/*Animation* anim = mrAnimator->FindAnimation(L"MushroomIdle");
+		if ( anim )
+		{
+			Texture* texture = anim->GetSpriteTexture();
+			if ( texture->GetTextureType() == Texture::ETextureType::bmp )
+			{
+				int a = 0;
+			}
+		}*/
+		/*SpriteRendererComp* sr = sheet->AddComponent<SpriteRendererComp>();
+		Texture* mrIdle = ResourceTable::Find<Texture>(L"MushroomIdle");
+		sr->SetTexture(mrIdle);*/
 	}
 
 	void PlayScene::InitializeBackground()

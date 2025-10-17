@@ -50,6 +50,21 @@ namespace KHS
 			return resource;
 		}
 
+		static void Insert(const std::wstring& key , Resource* resource)
+		{
+			if ( key == L"" )
+			{
+				return;
+			}
+
+			if ( resource == nullptr )
+			{
+				return;
+			}
+
+			m_resources.insert(std::make_pair(key , resource));
+		}
+
 		static void Release()
 		{
 			for(auto& iter : m_resources)
@@ -59,6 +74,7 @@ namespace KHS
 			}
 		}
 
+		
 
 	private:
 		static std::map<std::wstring, Resource*> m_resources;

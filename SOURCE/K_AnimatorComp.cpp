@@ -1,4 +1,5 @@
 ﻿#include "K_AnimatorComp.h"
+#include "K_ResourceTable.h"
 
 namespace KHS
 {
@@ -91,6 +92,55 @@ namespace KHS
 
 		m_events.insert(std::make_pair(name, events));
 		m_animations.insert(std::make_pair(name , anim));
+	}
+
+	void AnimatorComp::CreateAnimationByFolder(const std::wstring& name, const std::wstring& folderPath, Vector2D offset, float duration)
+	{
+		Animation* anim = nullptr;
+		anim = FindAnimation(name);
+		if (anim != nullptr)
+		{
+			return;
+		}
+
+		//load all images in the folder
+		int fileCount = 0;
+		std::filesystem::path filesystem(folderPath);
+		std::vector<Texture*> images = {};
+
+		for (const std::filesystem::directory_entry& entry : std::filesystem::recursive_directory_iterator(filesystem))
+		{
+			std::wstring fileName = entry.path().filename().wstring();
+			std::wstring fullName = entry.path().wstring();
+
+			Texture* texture = ResourceTable::Load<Texture>(fileName, fullName);
+			images.push_back(texture);
+
+			++fileCount;
+		}
+
+		//create sprite sheet
+		UINT spriteWidth = images[0]->GetWidth() * fileCount;
+		UINT spriteHeight = images[0]->GetHeight();
+		
+		Texture* spriteSheet = Texture::Create(name, spriteWidth, spriteHeight);
+		spriteSheet->SetTextureType(images[0]->GetTextureType());
+
+		UINT imageWidth = images[0]->GetWidth();
+		UINT imageHeight = images[0]->GetHeight();
+
+		//copy images to sprite sheet
+		for (size_t i = 0; i < images.size(); ++i)
+		{
+			BitBlt(spriteSheet->GetHdc(), i * imageWidth, 0,
+				imageWidth, imageHeight,
+				images[i]->GetHdc(), 0, 0, SRCCOPY);
+		}
+
+		//create animation
+		CreateAnimation(name, spriteSheet, Vector2D::Zero,
+			Vector2D((float)imageWidth, (float)imageHeight),
+			offset, fileCount, duration);
 	}
 
 	Animation* AnimatorComp::FindAnimation(const std::wstring& name)

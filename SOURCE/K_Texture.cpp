@@ -1,12 +1,15 @@
 ﻿#include "K_Texture.h"
 #include "K_Application.h"
+#include "K_ResourceTable.h"
 
 extern KHS::Application app;
 
 namespace KHS
 {
 	Texture::Texture()
-		:Resource(EResourceType::TEXTURE) , m_type(ETextureType::NONE) , m_image(nullptr) , m_bitmap(nullptr) , m_hdc(nullptr) , m_width(0) , m_height(0)
+		:Resource(EResourceType::TEXTURE) , m_type(ETextureType::NONE) , 
+		m_image(nullptr) , m_bitmap(nullptr) , m_hdc(nullptr) ,
+		m_bAlpha(false) , m_width(0) , m_height(0)
 	{
 	}
 
@@ -75,5 +78,35 @@ namespace KHS
 		}
 
 		return S_OK;
+	}
+
+	Texture* Texture::Create(const std::wstring& name, UINT width, UINT height)
+	{
+		Texture* texture = ResourceTable::Find<Texture>(name);
+
+		if ( texture )
+		{
+			return texture;
+		}
+
+		texture = new Texture();
+
+		texture->SetName(name);
+		texture->SetWidth(width);
+		texture->SetHeight(height);
+
+		//create bitmap and hdc
+		HDC mainDC = app.GetHdc();
+		texture->m_bitmap = CreateCompatibleBitmap(mainDC, width, height);
+		texture->m_hdc = CreateCompatibleDC(mainDC);
+
+		//select bitmap to hdc
+		HBITMAP oldBitmap = (HBITMAP)SelectObject(texture->m_hdc, texture->m_bitmap);
+		DeleteObject(oldBitmap);
+
+		//insert to resource table
+		ResourceTable::Insert(name + L"Image" , texture);
+
+		return texture;
 	}
 }

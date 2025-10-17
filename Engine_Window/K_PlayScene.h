@@ -15,6 +15,7 @@ namespace KHS
 		void InitializeMainCamera();
 		void InitializePlayer();
 		void InitializeEnemy();
+		void InitializeMushroom();
 		void InitializeBackground();
 
 	public:
