@@ -28,7 +28,7 @@ namespace KHS
 
 		//Resource Initialize before Object Instantiate
 		InitializePlayer();
-		//InitializeEnemy();
+		InitializeEnemy();
 		InitializeMushroom();
 		InitializeBackground();
 

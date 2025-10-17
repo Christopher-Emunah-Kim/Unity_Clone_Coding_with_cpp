@@ -37,12 +37,40 @@ namespace KHS
 
 		if(m_texture->GetTextureType() == Texture::ETextureType::bmp)
 		{
-			////https://blog.naver.com/power2845/50147965306
-			TransparentBlt(hdc , static_cast<float>(pos.x) , static_cast< float >( pos.y)
-				, m_texture->GetWidth() * m_imageSize.x * scale.x 
-				, m_texture->GetHeight() * m_imageSize.y * scale.y 
-				, m_texture->GetHdc() , 0 , 0 , m_texture->GetWidth() , m_texture->GetHeight()
-				, RGB(255 , 0 , 255));
+			if ( m_texture->HasAlpha() )
+			{
+				BLENDFUNCTION func = {};
+				func.BlendOp = AC_SRC_OVER;
+				func.BlendFlags = 0;
+				func.AlphaFormat = AC_SRC_ALPHA;
+				func.SourceConstantAlpha = 255; //0(transparent) ~ 255(opaque)
+				//TODO : 피격 시 투명도 조절
+
+
+				AlphaBlend(hdc ,
+					static_cast< int >( pos.x  ) , 
+					static_cast< int >( pos.y  ) ,
+					m_texture->GetWidth() * m_imageSize.x * scale.x,
+					m_texture->GetHeight() * m_imageSize.y * scale.y,
+					m_texture->GetHdc() ,
+					0 , 0 ,
+					m_texture->GetWidth(),
+					m_texture->GetHeight(),
+					func);
+			}
+			else
+			{
+				////https://blog.naver.com/power2845/50147965306
+				TransparentBlt(hdc ,
+					static_cast< float >( pos.x ) , static_cast< float >( pos.y )
+					, m_texture->GetWidth() * m_imageSize.x * scale.x
+					, m_texture->GetHeight() * m_imageSize.y * scale.y
+					, m_texture->GetHdc()
+					, 0 , 0 ,
+					m_texture->GetWidth() ,
+					m_texture->GetHeight()
+					, RGB(255 , 0 , 255));
+			}
 		}
 		else if(m_texture->GetTextureType() == Texture::ETextureType::png)
 		{

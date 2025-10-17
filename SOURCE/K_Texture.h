@@ -25,6 +25,7 @@ namespace KHS
 		inline HDC GetHdc() { return m_hdc; }
 		inline ETextureType GetTextureType() { return m_type; }
 		inline Gdiplus::Image* GetImage() { return m_image; }
+		inline bool HasAlpha() { return m_bAlpha; }
 
 		inline void SetWidth(UINT width) { m_width = width; }
 		inline void SetHeight(UINT height) { m_height = height; }
@@ -35,10 +36,10 @@ namespace KHS
 		Gdiplus::Image* m_image;
 		HBITMAP m_bitmap;
 		HDC m_hdc;
-		bool m_bAlpha;
 
 		UINT m_width;
 		UINT m_height;
+		bool m_bAlpha;
 	};
 }
 

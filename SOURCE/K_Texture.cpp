@@ -53,6 +53,15 @@ namespace KHS
 			m_width = info.bmWidth;
 			m_height = info.bmHeight;
 
+			if(info.bmBitsPixel == 32)
+			{
+				m_bAlpha = true;
+			}
+			else if(info.bmBitsPixel == 24)
+			{
+				m_bAlpha = false;
+			}
+
 			HDC mainDC = app.GetHdc();
 			m_hdc = CreateCompatibleDC(mainDC);
 
