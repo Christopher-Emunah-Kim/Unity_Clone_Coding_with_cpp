@@ -21,6 +21,14 @@ namespace KHS
 		m_activeScene->Render(hdc);
 	}
 
+	void SceneManager::Destroy()
+	{
+		if (m_activeScene != nullptr)
+		{
+			m_activeScene->Destroy();
+		}
+	}
+
 	void SceneManager::Release()
 	{
 		for (auto& pair : m_scenes)

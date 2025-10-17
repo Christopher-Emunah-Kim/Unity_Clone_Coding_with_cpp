@@ -27,7 +27,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Layer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_MainCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Math.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)K_ObjectInstantiate.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_ObjectManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Resource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_ResourceTable.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Scene.h" />

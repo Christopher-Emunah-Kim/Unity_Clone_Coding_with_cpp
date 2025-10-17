@@ -5,7 +5,7 @@
 #include "K_Input.h"
 #include "K_TitleScene.h"
 #include "K_SceneManager.h"
-#include "K_ObjectInstantiate.h"
+#include "K_ObjectManager.h"
 #include "K_ResourceTable.h"
 #include "K_PlayerScript.h"
 #include "K_CameraComp.h"
@@ -37,7 +37,7 @@ namespace KHS
 
 	void PlayScene::InitializeMainCamera()
 	{
-		GameObject* camera = ObjectInstantiate::Instantiate<GameObject>(ELayerType::PARTICLE, 
+		GameObject* camera = ObjectManager::Instantiate<GameObject>(ELayerType::PARTICLE, 
 			Vector2D(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT/2.0f));
 
 		CameraComp* cameraComp = camera->AddComponent<CameraComp>();
@@ -47,7 +47,7 @@ namespace KHS
 
 	void PlayScene::InitializePlayer()
 	{
-		m_player = ObjectInstantiate::Instantiate<Player>(ELayerType::PLAYER);
+		m_player = ObjectManager::Instantiate<Player>(ELayerType::PLAYER);
 
 		mainCamera->SetTarget(m_player);
 
@@ -82,7 +82,7 @@ namespace KHS
 
 	void PlayScene::InitializeEnemy()
 	{
-		Enemy* enemy = ObjectInstantiate::Instantiate<Enemy>(ELayerType::ENEMY);
+		Enemy* enemy = ObjectManager::Instantiate<Enemy>(ELayerType::ENEMY);
 		enemy->AddComponent<EnemyScript>();
 
 		TransformComp* enemyTr = enemy->GetComponent<TransformComp>();
@@ -114,7 +114,7 @@ namespace KHS
 
 	void PlayScene::InitializeBackground()
 	{
-		GameObject* background = ObjectInstantiate::Instantiate<GameObject>(ELayerType::BACKGROUND);
+		GameObject* background = ObjectManager::Instantiate<GameObject>(ELayerType::BACKGROUND);
 
 		TransformComp* tr = background->GetComponent<TransformComp>();
 		tr->SetPosition(Vector2D(0.0f, 0.0f));

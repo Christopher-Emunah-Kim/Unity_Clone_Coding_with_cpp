@@ -50,6 +50,7 @@ namespace KHS
 		EEnemyDir m_dir;
 		AnimatorComp* m_animator;
 		float m_time;
+		float m_deathTime;
 	};
 }
 

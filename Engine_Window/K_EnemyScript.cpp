@@ -5,11 +5,13 @@
 #include "../SOURCE/K_GameObject.h"
 #include "../SOURCE/K_Component.h"
 #include "../SOURCE/K_AnimatorComp.h"
+#include "../SOURCE/K_ObjectManager.h"
 
 namespace KHS
 {
 	EnemyScript::EnemyScript()
-		:ScriptComp() , m_state(EEnemyState::SITDOWN), m_dir(EEnemyDir::END), m_animator(nullptr) , m_time(0.0f)
+		:ScriptComp() , m_state(EEnemyState::SITDOWN), m_dir(EEnemyDir::END), 
+		m_animator(nullptr) , m_time(0.0f) , m_deathTime(0.0f)
 	{
 	}
 
@@ -25,6 +27,13 @@ namespace KHS
 	void EnemyScript::Update()
 	{
 		ScriptComp::Update();
+
+		m_deathTime += Time::GetDeltaTime();
+		if ( m_deathTime > 6.0f )
+		{
+			ObjectManager::Destroy(GetOwner());
+			return;
+		}
 
 		if ( m_animator == nullptr )
 		{

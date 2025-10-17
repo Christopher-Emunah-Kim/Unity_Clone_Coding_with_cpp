@@ -96,9 +96,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Layer.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)K_ObjectInstantiate.h">
-      <Filter>Util</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)K_ResourceTable.h">
       <Filter>Resource</Filter>
     </ClInclude>
@@ -125,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)K_AnimatorComp.h">
       <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_ObjectManager.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

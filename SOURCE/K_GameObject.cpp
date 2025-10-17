@@ -9,6 +9,7 @@ namespace KHS
 {
 
 	GameObject::GameObject()
+		: m_state(EObjectState::ACTIVE)
 	{
 		m_components.resize(( UINT ) EComponentType::END);
 		AddTransformComp();
@@ -85,4 +86,21 @@ namespace KHS
 		}
 	}
 
+	void GameObject::SetActive(bool power)
+	{
+		if ( power == true )
+		{
+			m_state = EObjectState::ACTIVE;
+		}
+		
+		if( power == false )
+		{
+			m_state = EObjectState::PAUSED;
+		}
+	}
+
+	void GameObject::Death()
+	{
+		m_state = EObjectState::DEAD;
+	}
 }

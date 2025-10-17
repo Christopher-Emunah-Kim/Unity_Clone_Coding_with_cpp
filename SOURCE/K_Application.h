@@ -14,6 +14,7 @@ namespace KHS
 		void Update();
 		void LateUpdate();
 		void Render();
+		void Destroy();
 
 		void MyAdjustWindowRect(HWND hwnd, UINT width, UINT height);
 		void CreateBuffer(UINT width, UINT height);

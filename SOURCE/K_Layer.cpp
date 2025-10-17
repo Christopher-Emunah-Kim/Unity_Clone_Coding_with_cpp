@@ -11,8 +11,10 @@ namespace KHS
 	{
 		for (GameObject* obj : m_gameObjects)
 		{
-			if (obj == nullptr)
+			if ( obj == nullptr )
+			{
 				continue;
+			}
 
 			delete obj;
 			obj = nullptr;
@@ -24,8 +26,10 @@ namespace KHS
 	{
 		for (GameObject* obj : m_gameObjects)
 		{
-			if (obj == nullptr)
+			if ( obj == nullptr )
+			{
 				continue;
+			}
 
 			obj->Initialize();
 		}
@@ -35,8 +39,18 @@ namespace KHS
 	{
 		for (GameObject* obj : m_gameObjects)
 		{
-			if (obj == nullptr)
+			if ( obj == nullptr )
+			{
 				continue;
+			}
+
+			GameObject::EObjectState state = obj->GetState();
+
+			if ( state == GameObject::EObjectState::PAUSED
+				|| state == GameObject::EObjectState::DEAD )
+			{
+				continue;
+			}
 
 			obj->Update();
 		}
@@ -46,8 +60,18 @@ namespace KHS
 	{
 		for (GameObject* obj : m_gameObjects)
 		{
-			if (obj == nullptr)
+			if ( obj == nullptr )
+			{
 				continue;
+			}
+
+			GameObject::EObjectState state = obj->GetState();
+
+			if ( state == GameObject::EObjectState::PAUSED
+				|| state == GameObject::EObjectState::DEAD )
+			{
+				continue;
+			}
 
 			obj->LastUpdate();
 		}
@@ -57,12 +81,45 @@ namespace KHS
 	{
 		for (GameObject* obj : m_gameObjects)
 		{
-			if(obj == nullptr)
+			if ( obj == nullptr )
+			{
 				continue;
+			}
+
+			GameObject::EObjectState state = obj->GetState();
+
+			if ( state == GameObject::EObjectState::PAUSED
+				|| state == GameObject::EObjectState::DEAD )
+			{
+				continue;
+			}
 
 			obj->Render(hdc);
 		}
 	}
+
+	void Layer::Destroy()
+	{
+		for(std::vector<GameObject*>::iterator iter = m_gameObjects.begin(); iter != m_gameObjects.end();  )
+		{
+			GameObject::EObjectState state = ( *iter )->GetState();
+			if(state == GameObject::EObjectState::DEAD )
+			{
+				GameObject* deathObj = ( *iter );
+				iter = m_gameObjects.erase(iter);
+
+				delete deathObj;
+				deathObj = nullptr;
+
+				continue;
+			}
+			
+			//erase로 인해 iter가 다음 원소를 가리키므로 
+			//지워지지 않는 경우에만 ++iter
+			++iter;
+		}
+	}
+
 
 	void Layer::AddGameObject(GameObject* gameObject)
 	{

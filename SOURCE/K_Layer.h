@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "CommonInclude.h"
 #include "K_Entity.h"
 #include "K_GameObject.h"
@@ -15,6 +15,7 @@ namespace KHS
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
+		virtual void Destroy();
 
 		void AddGameObject(GameObject* gameObject);
 

@@ -7,7 +7,7 @@
 #include "../SOURCE/K_GameObject.h"
 #include "../SOURCE/K_Component.h"
 #include "../SOURCE/K_AnimatorComp.h"
-#include "../SOURCE/K_ObjectInstantiate.h"
+#include "../SOURCE/K_ObjectManager.h"
 #include "../SOURCE/K_ResourceTable.h"
 
 namespace KHS
@@ -79,7 +79,7 @@ namespace KHS
 
 	void PlayerScript::AttackEffect()
 	{
-		Enemy* enemy = ObjectInstantiate::Instantiate<Enemy>(ELayerType::ENEMY);
+		Enemy* enemy = ObjectManager::Instantiate<Enemy>(ELayerType::ENEMY);
 		enemy->AddComponent<EnemyScript>();
 
 		TransformComp* enemyTr = enemy->GetComponent<TransformComp>();

@@ -12,8 +12,10 @@ namespace KHS
 	{
 		for (Layer* layer : m_layers)
 		{
-			if (layer == nullptr)
+			if ( layer == nullptr )
+			{
 				continue;
+			}
 
 			delete layer;
 			layer = nullptr;
@@ -35,8 +37,10 @@ namespace KHS
 	{
 		for (Layer* layer : m_layers)
 		{
-			if (layer == nullptr)
+			if ( layer == nullptr )
+			{
 				continue;
+			}
 
 			layer->Initialize();
 		}
@@ -46,8 +50,10 @@ namespace KHS
 	{
 		for (Layer* layer : m_layers)
 		{
-			if (layer == nullptr)
+			if ( layer == nullptr )
+			{
 				continue;
+			}
 
 			layer->Update();
 		}
@@ -57,8 +63,10 @@ namespace KHS
 	{
 		for (Layer* layer : m_layers)
 		{
-			if (layer == nullptr)
+			if ( layer == nullptr )
+			{
 				continue;
+			}
 
 			layer->LateUpdate();
 		}
@@ -68,10 +76,25 @@ namespace KHS
 	{
 		for (Layer* layer : m_layers)
 		{
-			if (layer == nullptr)
+			if ( layer == nullptr )
+			{
 				continue;
+			}
 
 			layer->Render(hdc);
+		}
+	}
+
+	void Scene::Destroy()
+	{
+		for (Layer* layer : m_layers)
+		{
+			if ( layer == nullptr )
+			{
+				continue;
+			}
+
+			layer->Destroy();
 		}
 	}
 

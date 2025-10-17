@@ -8,6 +8,15 @@ namespace KHS
 	class GameObject
 	{
 	public:
+		enum class EObjectState
+		{
+			ACTIVE,
+			PAUSED,
+			DEAD,
+			END
+		};
+
+
 		GameObject();
 		~GameObject();
 
@@ -51,7 +60,13 @@ namespace KHS
 			return nullptr;
 		}
 
+		void SetActive(bool power);
+		void Death();
+
+		inline EObjectState GetState() { return m_state; }
+
 	private:
+		EObjectState m_state;
 		std::vector<Component*> m_components;
 	};
 

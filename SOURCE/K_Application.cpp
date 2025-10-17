@@ -47,6 +47,7 @@ namespace KHS
 			Update();
 			LateUpdate();
 			Render();
+			Destroy();
 		}
 	}
 
@@ -72,6 +73,11 @@ namespace KHS
 		SceneManager::Render(m_backHdc);
 
 		CopyBuffer(rect);
+	}
+
+	void Application::Destroy()
+	{
+		SceneManager::Destroy();
 	}
 
 	void Application::Release()

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "K_Entity.h"
 #include "K_Layer.h"
 
@@ -18,6 +18,7 @@ namespace KHS
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
+		virtual void Destroy();
 
 		virtual void OnEnter();
 		virtual void OnExit();
@@ -25,6 +26,7 @@ namespace KHS
 		void AddGameObject(GameObject* gameObject, ELayerType type);
 
 		Layer* GetLayer(ELayerType type);
+
 	private:
 		std::vector<Layer*> m_layers;
 	};

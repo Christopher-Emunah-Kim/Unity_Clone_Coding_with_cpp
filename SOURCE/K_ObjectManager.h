@@ -6,7 +6,7 @@
 #include "K_Scene.h"
 #include "K_TransformComp.h"
 
-namespace KHS::ObjectInstantiate
+namespace KHS::ObjectManager
 {
 	template <typename T>
 	static T* Instantiate(ELayerType type)
@@ -15,9 +15,6 @@ namespace KHS::ObjectInstantiate
 		
 		Scene* activeScene = SceneManager::GetActiveScene();
 		activeScene->AddGameObject(gameObject, type);
-
-		Layer* layer = activeScene->GetLayer(type);
-		layer->AddGameObject(gameObject);
 
 		return gameObject;
 	}
@@ -33,9 +30,16 @@ namespace KHS::ObjectInstantiate
 		Scene* activeScene = SceneManager::GetActiveScene();
 		activeScene->AddGameObject(gameObject, type);
 
-		Layer* layer = activeScene->GetLayer(type);
-		layer->AddGameObject(gameObject);
-
 		return gameObject;
+	}
+
+	static void Destroy(GameObject* obj)
+	{
+		if ( obj == nullptr )
+		{
+			return;
+		}
+
+		obj->Death();
 	}
 }
