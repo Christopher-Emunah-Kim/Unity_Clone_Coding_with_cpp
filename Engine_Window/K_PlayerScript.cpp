@@ -80,7 +80,8 @@ namespace KHS
 	void PlayerScript::AttackEffect()
 	{
 		Enemy* enemy = ObjectManager::Instantiate<Enemy>(ELayerType::ENEMY);
-		enemy->AddComponent<EnemyScript>();
+		EnemyScript* enmeyScript = enemy->AddComponent<EnemyScript>();
+		enmeyScript->SetPlayer(GetOwner());
 
 		TransformComp* enemyTr = enemy->GetComponent<TransformComp>();
 		enemyTr->SetPosition(Vector2D(200.0f, 200.0f));

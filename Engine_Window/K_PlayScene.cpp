@@ -84,7 +84,8 @@ namespace KHS
 	void PlayScene::InitializeEnemy()
 	{
 		Enemy* enemy = ObjectManager::Instantiate<Enemy>(ELayerType::ENEMY);
-		enemy->AddComponent<EnemyScript>();
+		EnemyScript* enmeyScript = enemy->AddComponent<EnemyScript>();
+		enmeyScript->SetPlayer(m_player);
 
 		TransformComp* enemyTr = enemy->GetComponent<TransformComp>();
 		enemyTr->SetPosition(Vector2D(200.0f, 200.0f));
@@ -116,7 +117,8 @@ namespace KHS
 	void PlayScene::InitializeMushroom()
 	{
 		Enemy* sheet = ObjectManager::Instantiate<Enemy>(ELayerType::PARTICLE);
-		sheet->AddComponent<EnemyScript>();
+		EnemyScript* enemyScript = sheet->AddComponent<EnemyScript>();
+		enemyScript->SetPlayer(m_player);
 
 		TransformComp* sheetTr = sheet->GetComponent<TransformComp>();
 		sheetTr->SetPosition(Vector2D(300.0f , 300.0f));

@@ -5,6 +5,7 @@ namespace KHS
 {
 	class AnimatorComp;
 	class TransformComp;
+	class GameObject;
 
 	class EnemyScript : public ScriptComp
 	{
@@ -45,12 +46,16 @@ namespace KHS
 		virtual void LateUpdate() override;
 		virtual void Render(HDC hdc) override;
 
+		void SetPlayer(GameObject* player) { m_player = player; }
+
 	private:
 		EEnemyState m_state;
 		EEnemyDir m_dir;
 		AnimatorComp* m_animator;
 		float m_time;
 		float m_deathTime;
+		GameObject* m_player;
+		Vector2D m_targetPos;
 	};
 }
 
