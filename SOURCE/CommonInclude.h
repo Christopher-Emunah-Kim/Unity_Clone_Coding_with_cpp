@@ -9,6 +9,7 @@
 #include <chrono>
 #include <conio.h>
 #include <ctime>
+#include <cmath>
 
 #include <vector>
 #include <map>
