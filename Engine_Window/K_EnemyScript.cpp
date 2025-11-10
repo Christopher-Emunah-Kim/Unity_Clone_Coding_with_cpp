@@ -12,7 +12,7 @@ namespace KHS
 	EnemyScript::EnemyScript()
 		:ScriptComp() , m_state(EEnemyState::SITDOWN), m_dir(EEnemyDir::END), 
 		m_animator(nullptr) , m_time(0.0f) , m_deathTime(0.0f),
-		m_player(nullptr) , m_targetPos(Vector2D::Zero)
+		m_player(nullptr) , m_targetPos(Vector2D::Zero) , m_radian(0.0f)
 	{
 	}
 
@@ -160,18 +160,43 @@ namespace KHS
 	{
 		m_time += Time::GetDeltaTime();
 
-		if ( m_time > 2.0f )
+		if ( m_time > 6.0f )
 		{
 			ObjectManager::Destroy(GetOwner());
 		}
 
 		TransformComp* tr = GetOwner()->GetComponent<TransformComp>();
 		Vector2D pos = tr->GetPosition();
-		TransformComp* playerTr = m_player->GetComponent<TransformComp>();
-		Vector2D dest = m_targetPos - playerTr->GetPosition();
 
-		dest = dest.Normalize();
-		pos += dest * (100.0f * Time::GetDeltaTime());
+		// 벡터 뺄셈 활용(마우스 방향 이동)
+		{
+			/*TransformComp* playerTr = m_player->GetComponent<TransformComp>();
+			Vector2D dest = m_targetPos - playerTr->GetPosition();
+
+			dest = dest.Normalize();
+			pos += dest * (100.0f * Time::GetDeltaTime());*/
+		}
+		
+		// 삼각함수 활용 이동
+		{
+			/*m_radian += Time::GetDeltaTime();
+			pos += Vector2D(1.0f , cosf(m_radian)) * ( 100.0f * Time::GetDeltaTime() );*/
+		}
+
+		//마우스 방향으로 회전 후 이동
+		{
+			TransformComp* playerTr = m_player->GetComponent<TransformComp>();
+			Vector2D dest = m_targetPos - playerTr->GetPosition();
+			dest = dest.Normalize();
+
+			float rotDegree;
+			float temp = dest.Dot(Vector2D::Right); //cosθ
+			temp = acos(temp);
+			Vector2D tempVec;
+			rotDegree = tempVec.ConvertToDegree(temp);
+
+			pos += dest * (100.0f * Time::GetDeltaTime());
+		}
 
 		tr->SetPosition(pos);
 	}

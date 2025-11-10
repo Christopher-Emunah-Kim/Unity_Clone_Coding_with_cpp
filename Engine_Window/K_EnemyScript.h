@@ -58,6 +58,7 @@ namespace KHS
 
 		GameObject* m_player;
 		Vector2D m_targetPos;
+		float m_radian;
 	};
 }
 
