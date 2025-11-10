@@ -47,6 +47,7 @@ namespace KHS
 		virtual void Render(HDC hdc) override;
 
 		void SetPlayer(GameObject* player) { m_player = player; }
+		void SetMoveToPos(Vector2D pos) { m_targetPos = pos; }
 
 	private:
 		EEnemyState m_state;
@@ -54,6 +55,7 @@ namespace KHS
 		AnimatorComp* m_animator;
 		float m_time;
 		float m_deathTime;
+
 		GameObject* m_player;
 		Vector2D m_targetPos;
 	};

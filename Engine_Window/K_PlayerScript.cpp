@@ -79,34 +79,7 @@ namespace KHS
 
 	void PlayerScript::AttackEffect()
 	{
-		Enemy* enemy = ObjectManager::Instantiate<Enemy>(ELayerType::ENEMY);
-		EnemyScript* enmeyScript = enemy->AddComponent<EnemyScript>();
-		enmeyScript->SetPlayer(GetOwner());
-
-		TransformComp* enemyTr = enemy->GetComponent<TransformComp>();
-		enemyTr->SetPosition(Vector2D(200.0f, 200.0f));
-		enemyTr->SetScale(Vector2D(3.0f, 3.0f));
-
-		Texture* enemyTexture = ResourceTable::Find<Texture>(L"Cat");
-
-		AnimatorComp* enemyAnimator = enemy->AddComponent<AnimatorComp>();
-
-		enemyAnimator->CreateAnimation(L"CatBackMove", enemyTexture,
-			Vector2D(0.0f, 0.0f), Vector2D(32.0f, 32.0f), Vector2D(0.0f, 0.0f), 4, 0.5f);
-		enemyAnimator->CreateAnimation(L"CatRightMove", enemyTexture,
-			Vector2D(0.0f, 32.0f), Vector2D(32.0f, 32.0f), Vector2D(0.0f, 0.0f), 4, 0.5f);
-		enemyAnimator->CreateAnimation(L"CatFrontMove", enemyTexture,
-			Vector2D(0.0f, 64.0f), Vector2D(32.0f, 32.0f), Vector2D(0.0f, 0.0f), 4, 0.5f);
-		enemyAnimator->CreateAnimation(L"CatLeftMove", enemyTexture,
-			Vector2D(0.0f, 96.0f), Vector2D(32.0f, 32.0f), Vector2D(0.0f, 0.0f), 4, 0.5f);
-		enemyAnimator->CreateAnimation(L"CatSitDown", enemyTexture,
-			Vector2D(0.0f, 128.0f), Vector2D(32.0f, 32.0f), Vector2D(0.0f, 0.0f), 4, 0.5f);
-		enemyAnimator->CreateAnimation(L"CatGrooming", enemyTexture,
-			Vector2D(0.0f, 160.0f), Vector2D(32.0f, 32.0f), Vector2D(0.0f, 0.0f), 4, 0.5f);
-		enemyAnimator->CreateAnimation(L"CatSleep", enemyTexture,
-			Vector2D(0.0f, 192.0f), Vector2D(32.0f, 32.0f), Vector2D(0.0f, 0.0f), 4, 0.5f);
-
-		enemyAnimator->PlayAnimation(L"CatSitDown", true);
+		
 	}
 
 
@@ -172,9 +145,42 @@ namespace KHS
 	{
 		if ( Input::GetKey(EKeyCode::LButton) )
 		{
-			m_state = EPlayerState::GIVEWATER;
-			m_animator->PlayAnimation(L"FrontGiveWater" , false);
+			Enemy* enemy = ObjectManager::Instantiate<Enemy>(ELayerType::ENEMY);
+			EnemyScript* enmeyScript = enemy->AddComponent<EnemyScript>();
+			enmeyScript->SetPlayer(GetOwner());
+
+			TransformComp* enemyTr = enemy->GetComponent<TransformComp>();
+			TransformComp* playerTr = GetOwner()->GetComponent<TransformComp>();
+			enemyTr->SetPosition(playerTr->GetPosition());
+			enemyTr->SetScale(Vector2D(3.0f , 3.0f));
+
+			Texture* enemyTexture = ResourceTable::Find<Texture>(L"Cat");
+
+			AnimatorComp* enemyAnimator = enemy->AddComponent<AnimatorComp>();
+
+			enemyAnimator->CreateAnimation(L"CatBackMove" , enemyTexture ,
+				Vector2D(0.0f , 0.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+			enemyAnimator->CreateAnimation(L"CatRightMove" , enemyTexture ,
+				Vector2D(0.0f , 32.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+			enemyAnimator->CreateAnimation(L"CatFrontMove" , enemyTexture ,
+				Vector2D(0.0f , 64.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+			enemyAnimator->CreateAnimation(L"CatLeftMove" , enemyTexture ,
+				Vector2D(0.0f , 96.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+			enemyAnimator->CreateAnimation(L"CatSitDown" , enemyTexture ,
+				Vector2D(0.0f , 128.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+			enemyAnimator->CreateAnimation(L"CatGrooming" , enemyTexture ,
+				Vector2D(0.0f , 160.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+			enemyAnimator->CreateAnimation(L"CatSleep" , enemyTexture ,
+				Vector2D(0.0f , 192.0f) , Vector2D(32.0f , 32.0f) , Vector2D(0.0f , 0.0f) , 4 , 0.5f);
+
+			enemyAnimator->PlayAnimation(L"CatSitDown" , true);
+
 			Vector2D mousePos = Input::GetMousePosition();
+			enmeyScript->SetMoveToPos(mousePos);
+
+			/*m_state = EPlayerState::GIVEWATER;
+			m_animator->PlayAnimation(L"FrontGiveWater" , false);
+			Vector2D mousePos = Input::GetMousePosition();*/
 		}
 
 		if ( Input::GetKeyDown(EKeyCode::D) || Input::GetKeyDown(EKeyCode::A) ||

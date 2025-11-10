@@ -28,8 +28,8 @@ namespace KHS
 
 		//Resource Initialize before Object Instantiate
 		InitializePlayer();
-		InitializeEnemy();
-		InitializeMushroom();
+		//InitializeEnemy();
+		//InitializeMushroom();
 		InitializeBackground();
 
 		//Intialize Layer and GameObject
@@ -129,19 +129,6 @@ namespace KHS
 			L"..\\Resources\\img\\MushroomIdle" , Vector2D::Zero , 0.1f);
 
 		mrAnimator->PlayAnimation(L"MushroomIdle" , true);
-
-		/*Animation* anim = mrAnimator->FindAnimation(L"MushroomIdle");
-		if ( anim )
-		{
-			Texture* texture = anim->GetSpriteTexture();
-			if ( texture->GetTextureType() == Texture::ETextureType::bmp )
-			{
-				int a = 0;
-			}
-		}*/
-		/*SpriteRendererComp* sr = sheet->AddComponent<SpriteRendererComp>();
-		Texture* mrIdle = ResourceTable::Find<Texture>(L"MushroomIdle");
-		sr->SetTexture(mrIdle);*/
 	}
 
 	void PlayScene::InitializeBackground()

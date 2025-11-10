@@ -160,35 +160,20 @@ namespace KHS
 	{
 		m_time += Time::GetDeltaTime();
 
+		if ( m_time > 2.0f )
+		{
+			ObjectManager::Destroy(GetOwner());
+		}
+
 		TransformComp* tr = GetOwner()->GetComponent<TransformComp>();
 		Vector2D pos = tr->GetPosition();
+		TransformComp* playerTr = m_player->GetComponent<TransformComp>();
+		Vector2D dest = m_targetPos - playerTr->GetPosition();
 
-		if ( Input::GetKeyDown(EKeyCode::LButton) )
-		{
-			m_targetPos = Input::GetMousePosition();
-		}
+		dest = dest.Normalize();
+		pos += dest * (100.0f * Time::GetDeltaTime());
 
-		Vector2D dest = m_targetPos - pos;
-		float distance = sqrtf(dest.x * dest.x + dest.y * dest.y);
-
-		if ( distance > 5.0f )
-		{
-			dest = dest.Normalize();
-			pos += dest * 100.0f * Time::GetDeltaTime();
-			tr->SetPosition(pos);
-		}
-
-		/*if(m_time > 2.0f)
-		{
-			m_state = EEnemyState::WALK;
-
-			int dir = rand() % 4;
-			m_dir = static_cast< EEnemyDir >( dir );
-
-			PlayAnimByDir(m_dir);
-
-			m_time = 0.0f;
-		}*/
+		tr->SetPosition(pos);
 	}
 
 	void EnemyScript::PlayAnimByDir(EEnemyDir dir)
