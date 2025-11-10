@@ -61,10 +61,10 @@ namespace KHS
 		static void Initialize();
 		static void Update();
 
-		static bool GetKeyDown(EKeyCode code) { return m_keys[static_cast<size_t>(code)].state == EKeyState::Down; }
-		static bool GetKeyUp(EKeyCode code) { return m_keys[static_cast<size_t>(code)].state == EKeyState::Up; }
-		static bool GetKey(EKeyCode code) { return m_keys[static_cast<size_t>(code)].state == EKeyState::Pressed; }
-		static Vector2D GetMousePosition() { return m_mousePosition; }
+		__forceinline static bool GetKeyDown(EKeyCode code) { return m_keys[static_cast<size_t>(code)].state == EKeyState::Down; }
+		__forceinline static bool GetKeyUp(EKeyCode code) { return m_keys[static_cast<size_t>(code)].state == EKeyState::Up; }
+		__forceinline static bool GetKey(EKeyCode code) { return m_keys[static_cast<size_t>(code)].state == EKeyState::Pressed; }
+		__forceinline static Vector2D GetMousePosition() { return m_mousePosition; }
 
 	private:
 		static std::vector<Key> m_keys;

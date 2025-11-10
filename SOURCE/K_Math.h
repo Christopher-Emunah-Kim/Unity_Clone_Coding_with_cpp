@@ -107,6 +107,11 @@ namespace KHS
 			return x * other.y - y * other.x;
 		}
 
+		float ConvertToDegree(float radian) const 
+		{
+			return (radian * 180.f) / PI;
+		}
+
 
 		float x;
 		float y;

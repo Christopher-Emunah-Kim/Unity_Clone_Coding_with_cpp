@@ -1,4 +1,4 @@
-#include "K_Time.h"
+ï»¿#include "K_Time.h"
 
 namespace KHS
 {
@@ -16,7 +16,7 @@ namespace KHS
 
 		std::chrono::duration<float> deltaTime = current - m_prevTimePoint;
 
-		if (TICK_INTERVAL_MS * 0.001f > deltaTime.count()) // Æ½ °£°İº¸´Ù ÂªÀ¸¸é ¾÷µ¥ÀÌÆ® ¾ÈÇÔ.
+		if (TICK_INTERVAL_MS * 0.001f > deltaTime.count()) // í‹± ê°„ê²©ë³´ë‹¤ ì§§ìœ¼ë©´ ì—…ë°ì´íŠ¸ ì•ˆí•¨.
 		{
 			return false;
 		}
@@ -49,8 +49,5 @@ namespace KHS
 		TextOut(hdc, 10, 10, str.c_str(), static_cast<int>(str.size()));
 	}
 
-	float Time::GetDeltaTime()
-	{
-		return std::chrono::duration<float>(m_deltaTime).count(); 
-	}
+	
 }

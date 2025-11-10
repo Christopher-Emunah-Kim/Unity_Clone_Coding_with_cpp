@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "CommonInclude.h"
 
 namespace KHS
@@ -15,7 +15,7 @@ namespace KHS
 		static bool CanUpdate();
 		static void Render(HDC hdc);
 
-		static float GetDeltaTime();
+		__forceinline static float GetDeltaTime() { return m_deltaTime; }
 
 	private:
 		static float m_deltaTime;
