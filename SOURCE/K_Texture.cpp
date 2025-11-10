@@ -109,6 +109,12 @@ namespace KHS
 		texture->m_bitmap = CreateCompatibleBitmap(mainDC, width, height);
 		texture->m_hdc = CreateCompatibleDC(mainDC);
 
+		//make transparent bitmap
+		HBRUSH transparentBrush = ( HBRUSH ) GetStockObject(NULL_BRUSH);
+		HBRUSH oldBrush = ( HBRUSH ) SelectObject(mainDC , transparentBrush);
+		Rectangle(texture->m_hdc , -1 , -1 , texture->GetWidth() + 1 , texture->GetHeight() + 1);
+		SelectObject(mainDC , oldBrush);
+
 		//select bitmap to hdc
 		HBITMAP oldBitmap = (HBITMAP)SelectObject(texture->m_hdc, texture->m_bitmap);
 		DeleteObject(oldBitmap);

@@ -13,6 +13,7 @@
 #include "K_AnimatorComp.h"
 #include "K_Enemy.h"
 #include "K_EnemyScript.h"
+#include "K_BoxCollider2D.h"
 
 namespace KHS
 {
@@ -29,8 +30,8 @@ namespace KHS
 		//Resource Initialize before Object Instantiate
 		InitializePlayer();
 		//InitializeEnemy();
-		//InitializeMushroom();
-		InitializeBackground();
+		InitializeMushroom();
+		//InitializeBackground();
 
 		//Intialize Layer and GameObject
 		Scene::Initialize();
@@ -55,7 +56,7 @@ namespace KHS
 		TransformComp* tr = m_player->GetComponent<TransformComp>();
 
 		PlayerScript* playerScript = m_player->AddComponent<PlayerScript>();
-
+		
 		Texture* playerTexture = ResourceTable::Find<Texture>(L"Player");
 
 		AnimatorComp* animator = m_player->AddComponent<AnimatorComp>();
@@ -77,6 +78,10 @@ namespace KHS
 		animator->GetCompleteEvent(L"FrontGiveWater")
 			= std::bind(&PlayerScript::AttackEffect , playerScript);
 
+		BoxCollider2D* boxCollider = m_player->AddComponent<BoxCollider2D>();
+		boxCollider->SetSize(Vector2D(80.0f , 125.0f));
+		//boxCollider->SetOffset(Vector2D(-50.0f , -50.0f));
+
 		tr->SetPosition(Vector2D(100.0f , 100.0f));
 		tr->SetScale(Vector2D(1.0f , 1.0f));
 	}
@@ -91,6 +96,8 @@ namespace KHS
 		enemyTr->SetPosition(Vector2D(200.0f, 200.0f));
 		enemyTr->SetScale(Vector2D(3.0f , 3.0f));
 
+		BoxCollider2D* boxCollider = enemy->AddComponent<BoxCollider2D>();
+		boxCollider->SetOffset(Vector2D(-50.0f , -50.0f));
 
 		Texture* enemyTexture = ResourceTable::Find<Texture>(L"Cat");
 
@@ -123,6 +130,10 @@ namespace KHS
 		TransformComp* sheetTr = sheet->GetComponent<TransformComp>();
 		sheetTr->SetPosition(Vector2D(300.0f , 300.0f));
 		sheetTr->SetScale(Vector2D(3.0f , 3.0f));
+
+		BoxCollider2D* boxCollider = sheet->AddComponent<BoxCollider2D>();
+		//boxCollider->SetOffset(Vector2D(-50.0f , -50.0f));
+		boxCollider->SetSize(Vector2D(230.0f , 230.0f));
 
 		AnimatorComp* mrAnimator = sheet->AddComponent<AnimatorComp>();
 		mrAnimator->CreateAnimationByFolder(L"MushroomIdle" ,

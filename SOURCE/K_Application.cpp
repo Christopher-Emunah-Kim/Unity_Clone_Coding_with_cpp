@@ -116,8 +116,16 @@ namespace KHS
 
 	void Application::ClearBuffer(RECT& rc)
 	{
+		//Clear BackBuffer with Gray Color
+		HBRUSH grayBrush = ( HBRUSH ) GetStockObject(GRAY_BRUSH);
+		HBRUSH oldBrush = ( HBRUSH ) SelectObject(m_backHdc , grayBrush);
+
 		GetClientRect(m_hwnd, &rc);
-		PatBlt(m_backHdc, -1, -1, rc.right +1, rc.bottom +1, WHITENESS);
+		//PatBlt(m_backHdc, -1, -1, rc.right +1, rc.bottom +1, WHITENESS);
+		PatBlt(m_backHdc, -1, -1, rc.right +1, rc.bottom +1, PATCOPY);
+
+		SelectObject(m_backHdc , oldBrush);
+		DeleteObject(grayBrush);
 	}
 
 	void Application::CopyBuffer(RECT& rc)

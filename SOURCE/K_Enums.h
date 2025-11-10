@@ -5,12 +5,11 @@ namespace KHS
 	enum class EComponentType : __int8
 	{
 		TRANSFORM,
+		SCRIPT,
+		COLLIDER,
 		SPRITERENDERER,
 		ANIMATOR,
-		SCRIPT,
 		CAMERA,
-		COLLIDER2D,
-		RIGIDBODY2D,
 		AUDIO,
 		END
 	};

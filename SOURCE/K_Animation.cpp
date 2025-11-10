@@ -138,6 +138,11 @@ namespace KHS
 					static_cast< int >( sprite.size.y ) ,
 					RGB(255 , 0 , 255)); //magenta
 			}
+
+			//충돌체 중심점 사각형 그리기
+			Rectangle(hdc ,
+				static_cast< int >( pos.x ), static_cast< int >( pos.y ),
+				static_cast< int >( pos.x + 7.0f ),	static_cast< int >( pos.y + 7.0f ));
 		}
 		else if( type == Texture::ETextureType::png )
 		{
