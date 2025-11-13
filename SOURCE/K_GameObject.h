@@ -64,6 +64,7 @@ namespace KHS
 		void Death();
 
 		inline EObjectState GetState() { return m_state; }
+		inline bool IsActive() { return m_state == EObjectState::ACTIVE; }
 
 	private:
 		EObjectState m_state;

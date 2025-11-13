@@ -64,6 +64,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)K_BoxCollider2D.cpp">
       <Filter>Collider</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_CollisionManager.cpp">
+      <Filter>Collider</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -142,6 +145,9 @@
       <Filter>Collider</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)K_BoxCollider2D.h">
+      <Filter>Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_CollisionManager.h">
       <Filter>Collider</Filter>
     </ClInclude>
   </ItemGroup>

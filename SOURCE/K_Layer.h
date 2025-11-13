@@ -19,6 +19,8 @@ namespace KHS
 
 		void AddGameObject(GameObject* gameObject);
 
+		inline const std::vector<GameObject*>& GetGameObjects() const { return m_gameObjects; }
+
 	private:
 		std::vector<GameObject*> m_gameObjects;
 	};

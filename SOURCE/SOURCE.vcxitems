@@ -21,6 +21,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)K_CameraComp.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_CircleCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_ColliderComp.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)K_CollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Entity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)K_Enums.h" />
@@ -48,6 +49,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)K_CameraComp.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_CircleCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_ColliderComp.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)K_CollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_GameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)K_Application.cpp" />

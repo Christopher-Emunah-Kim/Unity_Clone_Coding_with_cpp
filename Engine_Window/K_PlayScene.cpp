@@ -14,6 +14,7 @@
 #include "K_Enemy.h"
 #include "K_EnemyScript.h"
 #include "K_BoxCollider2D.h"
+#include "K_CollisionManager.h"
 
 namespace KHS
 {
@@ -24,6 +25,9 @@ namespace KHS
 
     void PlayScene::Initialize()
     {
+		//Collision Check
+		CollisionManager::CollisionLayerCheck(ELayerType::PLAYER , ELayerType::ENEMY , true);
+
 		//Main Camera
 		InitializeMainCamera();
 

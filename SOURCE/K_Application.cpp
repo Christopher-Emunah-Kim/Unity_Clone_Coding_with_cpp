@@ -3,6 +3,7 @@
 #include "K_Time.h"
 #include "K_SceneManager.h"
 #include "K_ResourceTable.h"
+#include "K_CollisionManager.h"
 #include "../Editor_Window/framework.h"
 
 namespace KHS
@@ -54,12 +55,13 @@ namespace KHS
 	void Application::Update()
 	{
 		Input::Update();
-
+		CollisionManager::Update();
 		SceneManager::Update();
 	}
 
 	void Application::LateUpdate()
 	{
+		CollisionManager::LateUpdate();
 		SceneManager::LateUpdate();
 	}
 
@@ -70,6 +72,7 @@ namespace KHS
 
 		//Rendering Code
 		Time::Render(m_backHdc);
+		CollisionManager::Render(m_backHdc);
 		SceneManager::Render(m_backHdc);
 
 		CopyBuffer(rect);

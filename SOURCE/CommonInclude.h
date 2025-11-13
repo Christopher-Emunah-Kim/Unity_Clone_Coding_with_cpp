@@ -10,6 +10,7 @@
 #include <conio.h>
 #include <ctime>
 #include <cmath>
+#include <bitset>
 
 #include <vector>
 #include <map>
