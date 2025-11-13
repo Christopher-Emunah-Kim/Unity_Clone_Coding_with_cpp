@@ -7,7 +7,7 @@
 namespace KHS
 {
 	BoxCollider2D::BoxCollider2D()
-		:ColliderComp() , m_size(Vector2D::Zero)
+		:ColliderComp()
 	{
 	}
 
@@ -50,10 +50,10 @@ namespace KHS
 		HPEN oldPen = ( HPEN ) SelectObject(hdc , greenPen);
 
 		Rectangle(hdc ,
-			static_cast< int >( pos.x - ( m_size.x * 0.5f ) + offset.x ) ,
-			static_cast< int >( pos.y - ( m_size.y * 0.5f ) + offset.y ) ,
-			static_cast< int >( pos.x + ( m_size.x * 0.5f ) + offset.x ) ,
-			static_cast< int >( pos.y + ( m_size.y * 0.5f ) + offset.y ));
+			static_cast< int >( pos.x - ( GetSize().x * 0.5f ) + offset.x ) ,
+			static_cast< int >( pos.y - ( GetSize().y * 0.5f ) + offset.y ) ,
+			static_cast< int >( pos.x + ( GetSize().x * 0.5f ) + offset.x ) ,
+			static_cast< int >( pos.y + ( GetSize().y * 0.5f ) + offset.y ));
 
 		SelectObject(hdc , oldBrush);
 		SelectObject(hdc , oldPen);

@@ -127,7 +127,7 @@ namespace KHS
 
 	void PlayScene::InitializeMushroom()
 	{
-		Enemy* sheet = ObjectManager::Instantiate<Enemy>(ELayerType::PARTICLE);
+		Enemy* sheet = ObjectManager::Instantiate<Enemy>(ELayerType::ENEMY);
 		EnemyScript* enemyScript = sheet->AddComponent<EnemyScript>();
 		enemyScript->SetPlayer(m_player);
 

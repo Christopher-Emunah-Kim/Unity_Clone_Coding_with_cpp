@@ -15,6 +15,10 @@ namespace KHS
 		virtual void LateUpdate() override;
 		virtual void Render(HDC hdc) override;
 
+		virtual void OnCollisionEnter(class ColliderComp* other);
+		virtual void OnCollisionStay(class ColliderComp* other);
+		virtual void OnCollisionExit(class ColliderComp* other);
+
 	private:
 
 	};

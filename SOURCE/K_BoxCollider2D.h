@@ -15,11 +15,7 @@ namespace KHS
 		virtual void LateUpdate() override;
 		virtual void Render(HDC hdc) override;
 
-		inline void SetSize(const Vector2D& size) { m_size = size; }
-		inline Vector2D GetSize() const { return m_size; }
-
 	private:
-		Vector2D m_size;
 
 	};
 

@@ -4,6 +4,7 @@
 #include "../SOURCE/K_Input.h"
 #include "../SOURCE/K_Time.h"
 #include "../SOURCE/K_TransformComp.h"
+#include "../SOURCE/K_ColliderComp.h"
 #include "../SOURCE/K_GameObject.h"
 #include "../SOURCE/K_Component.h"
 #include "../SOURCE/K_AnimatorComp.h"
@@ -75,6 +76,19 @@ namespace KHS
 	void PlayerScript::Render(HDC hdc)
 	{
 		ScriptComp::Render(hdc);
+	}
+
+	void PlayerScript::OnCollisionEnter(ColliderComp* other)
+	{
+		//other->GetOwner()->GetComponent<TransformComp>()->SetPosition(Vector2D(400.0f , 500.0f));
+	}
+
+	void PlayerScript::OnCollisionStay(ColliderComp* other)
+	{
+	}
+
+	void PlayerScript::OnCollisionExit(ColliderComp* other)
+	{
 	}
 
 	void PlayerScript::AttackEffect()
@@ -198,4 +212,6 @@ namespace KHS
 			m_animator->PlayAnimation(L"Idle" , false);
 		}
 	}
+
+
 }

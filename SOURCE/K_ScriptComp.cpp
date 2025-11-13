@@ -26,4 +26,16 @@ namespace KHS
 	void ScriptComp::Render(HDC hdc)
 	{
 	}
+
+	void ScriptComp::OnCollisionEnter(class ColliderComp* other)
+	{
+	}
+
+	void ScriptComp::OnCollisionStay(class ColliderComp* other)
+	{
+	}
+
+	void ScriptComp::OnCollisionExit(class ColliderComp* other)
+	{
+	}
 }
